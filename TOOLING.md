@@ -10,11 +10,10 @@ development of the **tw-themes** project.
 - [Project Resources]
 - [Project Setup]
   - [Setup GitHub Project]
-  - [Setup Svelte App Tooling]
+  - [Setup Library Tooling]
   - [Setup Tailwind CSS]
   - [Setup tw-themes]
   - [Setup Absolute Imports]
-  - [Setup Node Builtins]
   - [Setup Jest Unit Testing]
   - [Setup Documentation Tooling]
   - [Setup Deployment]
@@ -105,8 +104,6 @@ clean .......... AI: ?? cleans ALL machine-generated directories
 <!--- *** SECTION *************************************************************** --->
 # Dependencies
 
-??$$ retrofit
-
 This section provides some insight regarding the various dependencies
 found in **tw-themes**.
 
@@ -119,30 +116,14 @@ looking at `package.json`, the inevitable questions are:
 
 - Is it a dependency for project tooling or application code?
 
-  This last bullet is especially poignant because all Svelte project
-  dependencies are `devDependencies`, due to the fact that all run-time
-  resources are bundled together by the Svelte compiler.
-
 The following table itemizes the **tw-themes** dependencies,
 referencing when/where they were introduced/configured.
 
 Dependency                        | Type        | Usage                   | Refer To
 --------------------------------- | ----------- | ----------------------- | ----------------
-`@rollup/plugin-commonjs`         | **TOOLING** | Svelte Bundler related  | [Setup Svelte App Tooling]
-`@rollup/plugin-node-resolve`     | **TOOLING** | Svelte Bundler related  | [Setup Svelte App Tooling]
-`rollup`                          | **TOOLING** | Svelte Bundler          | [Setup Svelte App Tooling]
-`autoprefixer`                    | **TOOLING** | Tailwind CSS Build      | [Setup Tailwind CSS]
+`tailwindcss`                     | **TOOLING**<br>**APP** | our peerDependency<br>(what tw-themes is built on) | [Setup Library Tooling]<br>and app code: `src/...`
+`??more`                          | **TOOLING** | Deployment              | [Setup Deployment]
 `gh-pages`                        | **TOOLING** | Deployment              | [Setup Deployment]
-`rollup-plugin-css-only`          | **TOOLING** | Svelte Bundler related  | [Setup Svelte App Tooling]
-`rollup-plugin-livereload`        | **TOOLING** | Svelte Bundler related  | [Setup Svelte App Tooling]
-`rollup-plugin-svelte`            | **TOOLING** | Svelte Bundler related  | [Setup Svelte App Tooling]
-`rollup-plugin-terser`            | **TOOLING** | Svelte Bundler related  | [Setup Svelte App Tooling]
-`sirv-cli`                        | **TOOLING** | A static file server    | [Setup Svelte App Tooling]
-`svelte`                          | **TOOLING** | Svelte Compiler         | [Setup Svelte App Tooling]
-`svelte-preprocess`               | **TOOLING** | Tailwind CSS Build      | [Setup Tailwind CSS]
-`tailwindcss`                     | **TOOLING**<br>**APP**   | Tailwind CSS Build<br>and application code  | [Setup Tailwind CSS]<br>and app code: `src/...`
-`tw-themes`                       | **TOOLING**<br>**APP**   | a faux dependency (sourced here but a potential npm lib)  | [Setup tw-themes] and app code: `src/...`
-
 
 **OLD TEMPLATE:** ?? synced above (remove when complete)
 
@@ -161,8 +142,6 @@ Dependency                        | Type        | Usage                   | Refe
 `lodash.isobject`                 | **APP**     | Validation              | app code: `src/util/typeCheck.js`
 `lodash.isplainobject`            | **APP**     | Validation              | app code: `src/util/typeCheck.js`
 `lodash.isstring`                 | **APP**     | Validation              | app code: `src/util/typeCheck.js`
-`rollup-plugin-node-builtins`     | **TOOLING** | Build some npm packages | [Setup Node Builtins]
-`rollup-plugin-node-globals`      | **TOOLING** | Build some npm packages | [Setup Node Builtins]
 `rollup-plugin-postcss`           | **TOOLING** | UI Kit related          | [Setup UI Kit (SMUI)] ?? TRASH
 `sass`                            | **TOOLING** | UI Kit related          | [Setup UI Kit (SMUI)] ?? TRASH
 `svelte-material-ui`              | **APP**<br>**TOOLING** | UI Kit       | app code: `src/...`<br>[Setup UI Kit (SMUI)] ?? TRASH
@@ -172,10 +151,10 @@ Dependency                        | Type        | Usage                   | Refe
 <!--- *** SECTION *************************************************************** --->
 # Project Resources
 
-??$$ retrofit
-
 Wondering what some of the top-level file resources are?  Here is a
 summary:
+
+??$$ retrofit (should be close)
 
 ```
 tw-themes/
@@ -185,15 +164,10 @@ tw-themes/
   node_modules/ ........ install location of dependent packages (maintained by npm)
   package.json ......... project meta data with dependencies
   package-lock.json .... exhaustive dependency list with installed "locked" versions (maintained by npm)
-  public/ .............. the app deployment root (with generated build/) see: "Setup Svelte App Tooling"
   README.md ............ basic project docs
-  rollup.config.js ..... the rollup bundler configuration (used by Svelte) see: "Setup Svelte App Tooling"
   src/ ................. the app source code
-    main.js ............ mainline entry point (redirect to Main.svelte)
-    Main.svelte ........ general place to do setup/config (including Tailwind)
-    App.svelte ......... our top-most App component (launched from Main.svelte)
+    index.js ........... promotes all tw-themes PUBLIC API
     snip snip .......... many more!
-  tailwind.config.js ... the tailwind css configuration file
   TOOLING.md ........... this document :-)
 
   ?? L8TR: (as needed)
@@ -206,8 +180,6 @@ tw-themes/
 
 <!--- *** SECTION *************************************************************** --->
 # Project Setup
-
-??$$ retrofit
 
 This section chronicles the original setup of the **tw-themes**
 project.
@@ -224,11 +196,10 @@ were carried out, however in some cases the order can be changed.
 
 **Sub Sections**:
   - [Setup GitHub Project]
-  - [Setup Svelte App Tooling]
+  - [Setup Library Tooling]
   - [Setup Tailwind CSS]
   - [Setup tw-themes]
   - [Setup Absolute Imports]
-  - [Setup Node Builtins]
   - [Setup Jest Unit Testing]
   - [Setup Documentation Tooling]
   - [Setup Deployment]
@@ -303,7 +274,7 @@ _My personal notes are "hidden" (in comment form) in this doc ..._
       * verify README content on GitHub
       * NAH: add following topics (to github pages)
         >>> KEYWORDS
-        ... tailwind, theme, themes, dark, dark-mode, colors
+        ... tailwind, theme, themes, dark, dark-mode, colors, web
 
  > ********************************************************************************
  - create branch: initial-tooling
@@ -313,155 +284,106 @@ KJB Notes --->
 
 
 <!--- *** SUB-SECTION *************************************************************** --->
-# Setup Svelte App Tooling
+# Setup Library Tooling
 
-??$$ retrofit
+Setup Library Tooling
 
-This task assumes you are "starting from scratch", setting up the
-Svelte tooling _(the compiler, etc.)_, with the basic application code
-template.
+
+This task will setup the basic Node/NPM tooling needed to
+package/build/deploy this utility.
 
 At the end of this process you should have:
 
-- A running Svelte app _(a very basic template starting point)_
+- The tooling needed to build/deploy a JavaScript utility.
 
 - Impacted Dependencies:
   ```
-  @rollup/plugin-commonjs
-  @rollup/plugin-node-resolve
-  rollup
-  rollup-plugin-css-only
-  rollup-plugin-livereload
-  rollup-plugin-svelte
-  rollup-plugin-terser
-  sirv-cli
-  svelte
+  tailwindcss ... our peerDependency (what tw-themes is built on)
   ```
 
 - Impacted Files:
   ```
   tw-themes/
+    .gitignore ........... modified as needed
     node_modules/ ........ install location of dependent packages (maintained by npm)
     package.json ......... project meta data with dependencies
     package-lock.json .... exhaustive dependency list with installed "locked" versions (maintained by npm)
-    public/ .............. the Svelte app deployment root (with generated build/) [see: "Setup Svelte App Tooling"]
-    rollup.config.js ..... the rollup bundler configuration (used by Svelte) [see: "Setup Svelte App Tooling"]
-    src/ ................. the app source code (the basic template starting point)
   ```
-
-**Original Instructions**:
-- [Getting started with Svelte](https://svelte.dev/blog/the-easiest-way-to-get-started#2_Use_degit)
-  _(from the Svelte site - the horses mouth)_
-- [Getting Started with Svelte 3](https://www.digitalocean.com/community/tutorials/getting-started-with-svelte-3)
-  _(pretty much same instructions)_
-- [Svelte Template Repo](https://github.com/sveltejs/template)
-
 
 **Summary**:
 
-Make a copy of the [Svelte Template Repo](https://github.com/sveltejs/template)
-using [degit](https://github.com/Rich-Harris/degit) _(a Rich Harris tool that copies git repositories)_
+1. Create `package.json` file at project root, with following the
+   characteristics _(this contains our `tailwindcss` peerDependency)_:
 
-```
-- Summary Instructions:
-  $ cd c:/dev
-  $ npx degit sveltejs/template tw-themes
-  $ cd tw-themes
-  $ npm install
-  $ npm run dev
+   ```js
+   {
+     "name": "tw-themes",
+     "version": "0.1.0",
+     "description": "powerful tailwind color themes (dynamically selectable at run-time)",
+     "homepage": "https://tw-themes.js.org/",
+     "repository": {
+       "type": "git",
+       "url": "https://github.com/KevinAst/tw-themes.git"
+     },
+     "keywords": [
+       "tailwind",
+       "themes",
+       "theme",
+       "dark",
+       "dark-mode",
+       "colors",
+       "web",
+       "utility",
+       "geeku",
+       "astx"
+     ],
+     "author": "Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)",
+     "license": "MIT",
+     "scripts": {
+       "L8TR": "L8TR"
+     },
+     "devDependencies": {
+       "tailwindcss": ">=2.0.0"
+     },
+     "peerDependencies": {
+       "tailwindcss": ">=2.0.0"
+     }
+   }
+   ```
 
-  * Update package.json with any additional fields you may desire
-    (description, homepage, repository, keywords, license, etc.)
+2. Initialize Node/NPM:
 
-  * Move sirv-cli FROM: dependencies TO: devDependencies (in package.json)
-    ... unsure why template registers this as dependencies
+   ```
+   $ cd c:/dev/tw-themes
+   $ npm install
+   ```
 
-- Summary of npm scripts:
+3. Update `.gitignore` with following:
 
-  * start .......... start a static file server from the contents of public/
-                     http://localhost:5000/
-                     NOTE: This is implicitly invoked from app:devServe script
-                           As a result, it CANNOT be renamed :-(
-                     NOTE: You can invoke this explicitly to server the contents of
-                           a production build (i.e. app:prodBuild)
+   ```
+   # node dependencies (defined via "npm install")
+   /node_modules/
 
-                     >>> renamed FROM: dev
-  * app:devServe ... launch dev server, with continuous build (watching for code changes)
-                     http://localhost:5000/
-                     NOTE: the internals of this script:
-                           1. invokes the rollup bundler in a "watch" state (to: public/build)
-                           2. implicitly invokes "npm start" to launch the server
+   # not really interested in package-lock.json in repo
+   /package-lock.json
 
-                     >>> renamed FROM: build
-  * app:prodBuild .. build production bundle (to: public/build)
-                     NOTE: This is implicitly invoked from app:deploy
-```
+   ... snip snip
+   ```
+
+??$$$ retrofit ????????????????????????????????????????????????????????????????????????????????
 
 _My personal Detailed Notes are "hidden" (in comment form) in this doc ..._
 
 <!--- Comment out KJB Notes
 **Details**:
 ```
-- create a new project
-  $ cd c:/dev
-  # copy template to your project root
-  $ npx degit sveltejs/template tw-themes
+In addition to above:
 
-- setup the new project
-  $ cd tw-themes
-  * edit package.json
-    "name": "tw-themes",
-    "version": "0.1.0",
-  $ npm install
-    added 74 packages from 130 contributors and audited 104 packages in 4.591s
-
-    KJB NOTE: Svelte is the latest V3 (specified in template pkg: "svelte": "^3.0.0")
-              Installed Svelte IS: 3.20.1
-
-- configure static resources
-  * public/index.html
-    - change Title: tw-themes
-    - change resource resolution FROM absolute TO relative, making it deployable in a relative directory
-  * change the public/favicon.png to be tw-themes specific
-    - define the various tw-themes icons
-      public/
-        tw-themes.png            ... our favicon
-        tw-themes-logo.png       ... our logo
-        tw-themes-logo-eyes.jpg  ... prying eyes
-    - update index.html
-      * reference tw-themes.png
-    - delete template favicon.png
-
-- configure VSCode <<< DONE 3/11/2021
+- configure VSCode
   * setup VSCode workspace file (and edit):
     c:/dev/tw-themes.code-workspace 
   * launch this workspace
   * N/A: ONE TIME: NOW load the VSCode "svelte" extension
-
-- run the dev app
-  $ npm run dev
-  > NAVIGATE TO http://localhost:5000/
-
-- you can now change code, and it is rebuilt
-
-- ONE TIME: setup Svelte Dev Tools
-  * install from chrome web store
-  * KJB: has some visibility of props and state within the DOM
-         * doesn't appear to have var names associated with each (they are like array indices ... hmmmm)
-
-- FOR PRODUCTION BUILDS
-  # build optimized lib
-  $ npm run build
-    ... creates:
-        public/
-          build/ <<< creates this new
-            bundle.css
-            bundle.css.map
-            bundle.js
-            bundle.js.map
-  # can now run this production build
-    ... uses sirv that includes your dependencies ... hmmm 
-  $ npm run start
 ```
 KJB Notes --->
 
@@ -901,112 +823,6 @@ At the end of this process you should have:
             { find: '~', replacement: 'src' },
           ]
         }),
-      ]
-    };
-    ```
-
-
-<!--- *** SUB-SECTION *************************************************************** --->
-# Setup Node Builtins
-
-??$$ retrofit
-
-TODO: ?? WHAT?
-
-Some npm packages utilize node builtins.  This requires some
-additional rollup configuration!
-
-I ran across this using the `crc` npm package, which uses `buffer`
-internally, **which in turn requires this setup**.
-
-Without this rollup configuration, you will receive the following
-error from the svelte build process:
-
-```
-(!) Missing shims for Node.js built-ins
-Creating a browser bundle that depends on 'buffer'.
-You might need to include https://www.npmjs.com/package/rollup-plugin-node-builtins       
-(!) Plugin node-resolve: preferring built-in module 'buffer' over local alternative at 
-    'C:\dev\tw-themes\node_modules\buffer\index.js', pass 'preferBuiltins: false'
-    to disable this behavior or 'preferBuiltins: true' to disable this warning
-(!) Unresolved dependencies
-https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
-
-buffer (imported by 
-        node_modules\crc\crc1.js,
-        node_modules\crc\crc8.js,
-        node_modules\crc\crc16xmodem.js,
-        node_modules\crc\crc16modbus.js,
-        node_modules\crc\crc16.js,
-        node_modules\crc\crc16ccitt.js,
-        node_modules\crc\crc16kermit.js,
-        node_modules\crc\crc24.js,
-        node_modules\crc\crcjam.js,
-        node_modules\crc\crc32.js,
-        node_modules\crc\crc81wire.js,
-        node_modules\crc\create_buffer.js)
-
-(!) Missing global variable name
-Use output.globals to specify browser global variable names corresponding to external modules
-buffer (guessing 'buffer')
-```
-
-**Links**:
-- [use node builtins in browser with rollup](https://openbase.io/js/rollup-plugin-node-builtins)
-- [npm rollup-plugin-node-builtins](https://www.npmjs.com/package/rollup-plugin-node-builtins)
-- [npm rollup-plugin-node-globals](https://www.npmjs.com/package/rollup-plugin-node-globals)
-
-
-At the end of this process you should have:
-
-- The ability to use npm packages that utilize node builtins _(such as
-  `buffer`, used by `crc`)_.
-
-- Impacted Dependencies:
-  ```
-  rollup-plugin-node-builtins
-  rollup-plugin-node-globals
-  ```
-
-- Impacted Files:
-  ```
-  tw-themes/
-    rollup.config.js ... modified to include Node Builtin configuration
-  ```
-
-**Installation Details**:
-
-- Install required dependencies:
-  ```
-  $ npm install --save-dev rollup-plugin-node-builtins
-    + rollup-plugin-node-builtins@2.1.2
-      added 99 packages from 57 contributors and audited 267136 packages in 12.685s
-      found 2 moderate severity vulnerabilities
-
-  $ npm install --save-dev rollup-plugin-node-globals
-    + rollup-plugin-node-globals@1.4.0
-      added 5 packages from 79 contributors and audited 267145 packages in 9.376s
-      found 2 moderate severity vulnerabilities
-  ```
-
-
-- Configure `rollup.config.js` _(in support of **Node Builtins**)_
-
-  * For details, see embedded comments (`Node Builtins`) in `rollup.config.js`
-
-  * **rollup.config.js** _sample_
-    ```js
-    // KJB: in support of: Node Builtins, used by some npm packages (e.g. crc/buffer), requiring built-in shim for modules designed for Browserfy
-    import globals   from 'rollup-plugin-node-globals';
-    import builtins  from 'rollup-plugin-node-builtins';
-
-    export default {
-      ...
-      plugins: [
-        ...
-        // KJB: in support of: Node Builtins, used by some npm packages (e.g. crc/buffer), requiring built-in shim for modules designed for Browserfy
-        globals(),
-        builtins(),
       ]
     };
     ```
@@ -1579,11 +1395,10 @@ KJB Notes --->
 [Project Resources]:              #project-resources
 [Project Setup]:                  #project-setup
   [Setup GitHub Project]:         #setup-github-project
-  [Setup Svelte App Tooling]:     #setup-svelte-app-tooling
+  [Setup Library Tooling]:        #setup-library-tooling
   [Setup Tailwind CSS]:           #setup-tailwind-css
   [Setup tw-themes]:              #setup-tw-themes
   [Setup Absolute Imports]:       #setup-absolute-imports
-  [Setup Node Builtins]:          #setup-node-builtins
   [Setup Jest Unit Testing]:      #setup-jest-unit-testing
   [Setup Documentation Tooling]:  #setup-documentation-tooling
   [Setup Deployment]:             #setup-deployment

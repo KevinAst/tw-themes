@@ -1,0 +1,33 @@
+{
+  "name": "tw-themes",
+  "version": "0.1.0",
+  "description": "powerful tailwind color themes (dynamically selectable at run-time)",
+  "homepage": "https://tw-themes.js.org/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KevinAst/tw-themes.git"
+  },
+  "keywords": [
+    "tailwind",
+    "themes",
+    "theme",
+    "dark",
+    "dark-mode",
+    "colors",
+    "web",
+    "utility",
+    "geeku",
+    "astx"
+  ],
+  "author": "Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)",
+  "license": "MIT",
+  "scripts": {
+    "L8TR": "L8TR"
+  },
+  "devDependencies": {
+    "tailwindcss": ">=2.0.0"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=2.0.0"
+  }
+}

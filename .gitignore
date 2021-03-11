@@ -1,0 +1,16 @@
+# node dependencies (defined via "npm install")
+/node_modules/
+
+# not really interested in package-lock.json in repo
+/package-lock.json
+
+# ?? REFINE LATER
+# bundled distribution (generated via "npm run build")
+/dist/
+/lib/
+/es/
+
+# ?? REFINE LATER
+# documentation (machine generated from GitBook)
+/_book/
+/_docs/cur/
