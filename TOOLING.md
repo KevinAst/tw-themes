@@ -30,7 +30,7 @@ _(organized by task)_:
 ```
 DEVELOPMENT
 ===========
-app:devServe ... launch dev server, with continuous build (watching for code changes)
+app:devServe ... AI: ?? launch dev server, with continuous build (watching for code changes)
                  http://localhost:5000/
                  NOTE: the internals of this script:
                        1. invokes the rollup bundler in a "watch" state (to: public/build)
@@ -38,7 +38,7 @@ app:devServe ... launch dev server, with continuous build (watching for code cha
 
 docs:serve ..... AI: ?? launch documentation server, continuously watching for docs changes
 
-start .......... start a static file server from the contents of public/
+start .......... AI: ?? start a static file server from the contents of public/
                  http://localhost:5000/
                  NOTE: This is implicitly invoked from app:devServe script
                        As a result, it CANNOT be renamed :-(
@@ -48,8 +48,8 @@ start .......... start a static file server from the contents of public/
 
 TESTING
 =======
-test ........... AI: ?? run test suite, one time
-test:watch ..... AI: ?? run test suite, continuously watching for module changes
+test ........... run test suite, one time
+test:watch ..... run test suite, continuously watching for module changes
 
 
 CODE QUALITY
@@ -121,6 +121,10 @@ referencing when/where they were introduced/configured.
 
 Dependency                        | Type        | Usage                   | Refer To
 --------------------------------- | ----------- | ----------------------- | ----------------
+`@babel/core`                     | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
+`@babel/preset-env`               | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
+`babel-jest`                      | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
+`jest`                            | **TOOLING** | Jest Testing Framework  | [Setup Jest Unit Testing]
 `tailwindcss`                     | **TOOLING**<br>**APP** | our peerDependency<br>(what tw-themes is built on) | [Setup Library Tooling]<br>and app code: `src/...`
 `??more`                          | **TOOLING** | Deployment              | [Setup Deployment]
 `gh-pages`                        | **TOOLING** | Deployment              | [Setup Deployment]
@@ -129,13 +133,9 @@ Dependency                        | Type        | Usage                   | Refe
 
 Dependency                        | Type        | Usage                   | Refer To
 --------------------------------- | ----------- | ----------------------- | ----------------
-`@babel/core`                     | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
-`@babel/preset-env`               | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
 <del>`@rollup/plugin-alias`</del> | **TOOLING** | Absolute Imports        | [Setup Absolute Imports]
-`babel-jest`                      | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
 `crc`                             | **APP**     | CRC Hashing Utility     | app code: `src/util/crc.js`
 `enumify`                         | **APP**     | Enumeration Utility     | app code: `src/...`
-`jest`                            | **TOOLING** | Jest Testing Framework  | [Setup Jest Unit Testing]
 `konva`                           | **APP**     | Konva canvas 2D lib     | app code: `src/...`
 `lodash.isequal`                  | **APP**     | Validation              | app code: `src/util/typeCheck.js`
 `lodash.isfunction`               | **APP**     | Validation              | app code: `src/util/typeCheck.js`
@@ -160,6 +160,8 @@ summary:
 tw-themes/
   .git/ ................ our local git repo
   .gitignore ........... git repo exclusions (typically machine generated)
+  babel.config.js ...... babel configuration used by jest see: "Setup Jest Unit Testing"
+  jest.config.js ....... jest unit testing configuration see: "Setup Jest Unit Testing"
   LICENSE.md ........... our MIT License
   node_modules/ ........ install location of dependent packages (maintained by npm)
   package.json ......... project meta data with dependencies
@@ -172,9 +174,7 @@ tw-themes/
 
   ?? L8TR: (as needed)
   _docs/ ............... machine generated docs see: "AI"
-  babel.config.js ...... babel configuration used by jest see: "Setup Jest Unit Testing"
   docs/ ................ master source of our on-line docs see: "AI"
-  jest.config.js ....... jest unit testing configuration see: "Setup Jest Unit Testing"
 ```
 
 
@@ -369,8 +369,6 @@ At the end of this process you should have:
 
    ... snip snip
    ```
-
-??$$$ retrofit ????????????????????????????????????????????????????????????????????????????????
 
 _My personal Detailed Notes are "hidden" (in comment form) in this doc ..._
 
@@ -831,25 +829,16 @@ At the end of this process you should have:
 <!--- *** SUB-SECTION *************************************************************** --->
 # Setup Jest Unit Testing
 
-??$$ retrofit
-
-TODO: ?? update when in-use
-
 **tw-themes** uses [Jest](https://jestjs.io/en/) as it's unit
-testing framework.  Svelte is **not** pre-configured with any testing
-solution, so you must configure this yourself.
-
+testing framework.
 
 **Links**:
 - [Jest](https://jestjs.io/en/)
 - [Jest Installation](https://jestjs.io/docs/en/getting-started.html)
-- [Testing Svelte components with Jest](https://dev.to/jpblancodb/testing-svelte-components-with-jest-53h3)
-- [How to test Svelte components](https://timdeschryver.dev/blog/how-to-test-svelte-components)
 
 At the end of this process you should have:
 
-- The ability to use Jest in testing your JavaScript modules _(**not**
-  GUI)_.
+- The ability to use Jest in running the test suite.
 
 - Impacted Dependencies:
   ```
@@ -868,22 +857,16 @@ At the end of this process you should have:
 
 **Installation Details**:
 
-**NOTE**: Jest requires babel, which not available in Svelte
-          out-of-the-box, so you must install it manually.
-
-**SideBar**: **tw-themes** does **not** systematically test the GUI
-             itself, only business logic in JavaScript modules.  As a result, any
-             UI related dependency found in the linked instructions were omitted.
+**NOTE**: Jest requires babel (installed here)
 
 - Install required dependencies (Jest and Babel):
   ```
   $ npm install --save-dev @babel/core @babel/preset-env jest babel-jest
-    + jest@25.4.0
-      added 620 packages from 281 contributors and audited 260964 packages in 36.954s
-    + babel-jest@25.4.0
-    + @babel/core@7.9.0
-    + @babel/preset-env@7.9.5
-      added 68 packages from 7 contributors and updated 2 packages in 21.756s
+    + babel-jest@26.6.3
+    + jest@26.6.3
+    + @babel/preset-env@7.13.10
+    + @babel/core@7.13.10
+      added 576 packages from 365 contributors and audited 658 packages in 37.522s
   ```
 
 - Configure Jest/Babel by adding two files _(in project root)_:
@@ -906,7 +889,6 @@ At the end of this process you should have:
   * **babel.config.js**:
     ```js
     // babel needed for jest unit tests :-(
-    // ... Svelte has it's own ES6 mechanism :-)
     module.exports = {
       presets: [
         [
@@ -922,8 +904,7 @@ At the end of this process you should have:
     ```
 
 - Setup the **Testing NPM Scripts**:
-
-  **babel.config.js**:
+  **package.json**:
   ```js
   ... snip snip
 
@@ -935,7 +916,6 @@ At the end of this process you should have:
 
   ... snip snip
   ```
-
 
 <!--- *** SUB-SECTION *************************************************************** --->
 # Setup Documentation Tooling
