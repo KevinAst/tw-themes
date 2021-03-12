@@ -1,0 +1,32 @@
+{
+  "gitbook":     "3.2.2",
+  "root":        "./docs",
+  "title":       "tw-themes",
+  "description": "powerful tailwind color themes (dynamically selectable at run-time)",
+  "author":      "Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)",
+  "structure": { 
+    "readme":  "intro.md",
+    "summary": "toc.md" 
+  },
+  "plugins": [
+    "-livereload",
+    "-sharing",
+    "toolbar"
+  ],
+  "pluginsConfig": {
+    "toolbar": {
+      "buttons": [
+        {
+          "label": "GitHub",
+          "icon": "fa fa-github",
+          "url": "https://github.com/KevinAst/tw-themes"
+        },
+        {
+          "label": "NPM",
+          "icon": "fa fa-bullseye",
+          "url": "https://www.npmjs.com/package/tw-themes"
+        }
+      ]
+    }
+  }
+}

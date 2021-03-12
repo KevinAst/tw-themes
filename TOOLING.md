@@ -21,8 +21,6 @@ development of the **tw-themes** project.
 <!--- *** SECTION *************************************************************** --->
 # NPM Scripts
 
-??$$ retrofit
-
 This section provides a summary of the available **NPM Scripts**
 _(organized by task)_:
 
@@ -36,7 +34,8 @@ app:devServe ... AI: ?? launch dev server, with continuous build (watching for c
                        1. invokes the rollup bundler in a "watch" state (to: public/build)
                        2. implicitly invokes "npm start" to launch the server
 
-docs:serve ..... AI: ?? launch documentation server, continuously watching for docs changes
+docs:serve ..... launch documentation server, continuously watching for docs changes
+                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
 
 start .......... AI: ?? start a static file server from the contents of public/
                  http://localhost:5000/
@@ -80,16 +79,16 @@ app:clean ...... AI: ?? clean all machine-generated app/build directories
 
 PUBLISH          NOTE: we PUBLISH the documentation
 =======
-docs:publish ... AI: ?? publish the latest documentation to https://tw-themes.js.org/docs/
+docs:publish ... publish the latest documentation to https://tw-themes.js.org/
                  NOTE: this script FIRST builds the docs from scratch
                        ... via predocs:publish
 
                  >>> OPTIONALLY:
-docs:build   ... AI: ?? you can manually build the docs (into the _book/ dir)
+docs:build   ... you can manually build the docs (into the _book/ dir)
                  HOWEVER it is not typically necessary 
                  BECAUSE this build is executed as the first step in docs:publish
 
-docs:clean   ... AI: ?? clean all machine-generated docs directories
+docs:clean   ... clean all machine-generated docs directories
 
 
 MISC
@@ -119,33 +118,16 @@ looking at `package.json`, the inevitable questions are:
 The following table itemizes the **tw-themes** dependencies,
 referencing when/where they were introduced/configured.
 
-Dependency                        | Type        | Usage                   | Refer To
---------------------------------- | ----------- | ----------------------- | ----------------
-`@babel/core`                     | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
-`@babel/preset-env`               | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
-`babel-jest`                      | **TOOLING** | Jest Testing related    | [Setup Jest Unit Testing]
-`jest`                            | **TOOLING** | Jest Testing Framework  | [Setup Jest Unit Testing]
+Dependency                        | Type        | Usage                     | Refer To
+--------------------------------- | ----------- | ------------------------- | ----------------
+`@babel/core`                     | **TOOLING** | Jest Testing related      | [Setup Jest Unit Testing]
+`@babel/preset-env`               | **TOOLING** | Jest Testing related      | [Setup Jest Unit Testing]
+`babel-jest`                      | **TOOLING** | Jest Testing related      | [Setup Jest Unit Testing]
+`gh-pages`                        | **TOOLING** | Documentation Deployment  | [Setup Documentation Tooling]
+`gitbook-cli`                     | **TOOLING** | Documentation Generation  | [Setup Documentation Tooling]
+`jest`                            | **TOOLING** | Jest Testing Framework    | [Setup Jest Unit Testing]
+`rimraf`                          | **TOOLING** | Various NPM Clean Scripts | [Setup Documentation Tooling]
 `tailwindcss`                     | **TOOLING**<br>**APP** | our peerDependency<br>(what tw-themes is built on) | [Setup Library Tooling]<br>and app code: `src/...`
-`??more`                          | **TOOLING** | Deployment              | [Setup Deployment]
-`gh-pages`                        | **TOOLING** | Deployment              | [Setup Deployment]
-
-**OLD TEMPLATE:** ?? synced above (remove when complete)
-
-Dependency                        | Type        | Usage                   | Refer To
---------------------------------- | ----------- | ----------------------- | ----------------
-<del>`@rollup/plugin-alias`</del> | **TOOLING** | Absolute Imports        | [Setup Absolute Imports]
-`crc`                             | **APP**     | CRC Hashing Utility     | app code: `src/util/crc.js`
-`enumify`                         | **APP**     | Enumeration Utility     | app code: `src/...`
-`konva`                           | **APP**     | Konva canvas 2D lib     | app code: `src/...`
-`lodash.isequal`                  | **APP**     | Validation              | app code: `src/util/typeCheck.js`
-`lodash.isfunction`               | **APP**     | Validation              | app code: `src/util/typeCheck.js`
-`lodash.isobject`                 | **APP**     | Validation              | app code: `src/util/typeCheck.js`
-`lodash.isplainobject`            | **APP**     | Validation              | app code: `src/util/typeCheck.js`
-`lodash.isstring`                 | **APP**     | Validation              | app code: `src/util/typeCheck.js`
-`rollup-plugin-postcss`           | **TOOLING** | UI Kit related          | [Setup UI Kit (SMUI)] ?? TRASH
-`sass`                            | **TOOLING** | UI Kit related          | [Setup UI Kit (SMUI)] ?? TRASH
-`svelte-material-ui`              | **APP**<br>**TOOLING** | UI Kit       | app code: `src/...`<br>[Setup UI Kit (SMUI)] ?? TRASH
-
 
 
 <!--- *** SECTION *************************************************************** --->
@@ -154,13 +136,15 @@ Dependency                        | Type        | Usage                   | Refe
 Wondering what some of the top-level file resources are?  Here is a
 summary:
 
-??$$ retrofit (should be close)
-
 ```
 tw-themes/
   .git/ ................ our local git repo
   .gitignore ........... git repo exclusions (typically machine generated)
+  _book/ ............... machine generated docs (output of GitBook)  see: "Setup Documentation Tooling"
   babel.config.js ...... babel configuration used by jest see: "Setup Jest Unit Testing"
+  book.json ............ GitBook configuration see: "Setup Documentation Tooling"
+  docs/ ................ master source of GitBook project docs  see: "Setup Documentation Tooling"
+    *.md ............... various Markdown files making up our docs
   jest.config.js ....... jest unit testing configuration see: "Setup Jest Unit Testing"
   LICENSE.md ........... our MIT License
   node_modules/ ........ install location of dependent packages (maintained by npm)
@@ -171,10 +155,6 @@ tw-themes/
     index.js ........... promotes all tw-themes PUBLIC API
     snip snip .......... many more!
   TOOLING.md ........... this document :-)
-
-  ?? L8TR: (as needed)
-  _docs/ ............... machine generated docs see: "AI"
-  docs/ ................ master source of our on-line docs see: "AI"
 ```
 
 
@@ -920,10 +900,244 @@ At the end of this process you should have:
 <!--- *** SUB-SECTION *************************************************************** --->
 # Setup Documentation Tooling
 
-??$$ retrofit
+**tw-themes** promotes it's documentation through [GitHub Pages],
+using [GitBook], which is a [Markdown] based solution.  This
+configuration setup is patterned after the following article _(minus
+the JSDoc)_: [Integrating GitBook with JSDoc to Document Your Open
+Source Project].
 
-TODO: ?? details to follow
+At the end of this process you should have:
 
+- Documentation setup through [Markdown] files, deployable to [GitHub Pages].
+
+- Impacted Dependencies:
+  ```
+  gh-pages
+  gitbook-cli
+  rimraf
+  ```
+
+- Impacted Files:
+  ```
+  package.json ...... enhance docs dependencies -and- docs scripts
+  book.json ......... GitBook configuration
+  docs/ ............. master source of GitBook project docs
+    toc.md .......... the summary TOC (seen in the left nav)
+    intro.md ........ the Guide Introduction
+    *.md ............ various Markdown files making up our docs
+    sectionN/ ....... optional docs dirs (as required)
+      *.md
+    styles/
+      website.css ... gitbook style overrides
+  _book/ ............ machine generated docs (output of GitBook)
+    *.html
+    *.js
+    *.css
+  ```
+
+**Installation Details**:
+
+1. Install the [GitBook command-line interface]
+
+   ```
+   $ npm install --save-dev gitbook-cli
+     + gitbook-cli@2.3.2
+       added 577 packages from 672 contributors and audited 1234 packages in 32.693s
+   ```
+
+   KJB: Yikes: this is the same version installed 3 years ago (in feature-u).
+
+   It has 10K downloads / week, but was last published 4 years ago ... hmmm
+
+2. Define following doc-related project files
+
+   **NOTE**: To find the installed gitbook version (referenced in `book.json` below):
+   ```
+   $ npx gitbook ls
+     GitBook Versions Installed:
+     * 3.2.2
+       2.5.2
+   ```
+
+   ```
+   book.json (GitBook configuration)
+   =========
+     {
+       "gitbook":     "3.2.2",
+       "root":        "./docs",
+       "title":       "tw-themes",
+       "description": "powerful tailwind color themes (dynamically selectable at run-time)",
+       "author":      "Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)",
+       "structure": { 
+         "readme":  "intro.md",
+         "summary": "toc.md" 
+       }
+     }
+
+   docs/
+
+     toc.md (defines the left-nav)
+     ======
+       # Table of content 
+       
+       ### tw-themes (0.1.0)
+       * [Getting Started](start.md)
+       
+       ----
+
+     intro.md (docs introduction)
+     ========
+       # tw-themes
+
+       **tw-themes** is a tailwindcss utility that facilitates _**dynamic
+       color themes that are selectable at run-time**_.
+
+     start.md (our getting started)
+     ========
+       # Getting Started
+       This is the **Getting Started** section.
+       Here are some references to the [Introduction](intro.md)
+       and [API](api.md).
+   ```
+
+3. Install gh-pages (used in npm scripts below)
+
+   ```
+   $ npm install --save-dev gh-pages
+     + gh-pages@3.1.0
+       added 28 packages from 10 contributors and audited 1262 packages in 10.237s
+   ```
+
+4. Install rimraf (used in npm scripts below)
+
+   ```
+   $ npm install --save-dev rimraf
+     + rimraf@3.0.2
+       updated 1 package and audited 1263 packages in 7.012s
+   ```
+
+5. Define the following **docs-related NPM scripts**:
+
+   **package.json**:
+   ```js
+   ... snip snip
+   "scripts": {
+     ...
+     "docs:build":            "gitbook build",
+     "docs:serve":            "gitbook serve",
+     "predocs:publish":       "npm run docs:build",
+     "docs:publish":          "gh-pages --dist _book",
+     "docs:gitbook:help":     "gitbook help",
+     "docs:clean":            "rimraf _book"
+     ...
+   },
+   ... snip snip
+   ```
+
+6. Prep/Initialize gitbook plugins.  This step is needed whenever you
+   add gitbook plugins via `book.json`. As an example the `toolbar`
+   plugin (mentioned below).
+
+   ```
+   $ npx gitbook install
+         info: nothing to install!
+               KJB: This command only needs to be run when gitbook plugins
+                    are added to book.json
+   ```
+
+7. Serve up docs to test our setup
+
+   ```
+   $ npm run docs:serve
+   ```
+
+   And browse: http://localhost:4000/
+
+   **Resolve Issues**
+   ```
+   - It appears that gitbook-cli is so old that it has issues running
+     in a modern node/npm.
+
+     Starting to question is gitbook is the best option for documentation
+     ... at least in future projects
+
+   - When running either "docs:build"/"docs:serve" receive follow error:
+     $ npx gitbook build
+       C:\dev\tw-themes\node_modules\npm\node_modules\graceful-fs\polyfills.js:287
+             if (cb) cb.apply(this, arguments)
+                        ^
+       TypeError: cb.apply is not a function
+           at C:\dev\tw-themes\node_modules\npm\node_modules\graceful-fs\polyfills.js:287:18
+           at FSReqCallback.oncomplete (fs.js:184:5)
+
+     * found several mentions of this:
+
+       1. Gitbook-cli install error TypeError: cb.apply is not a function inside graceful-fs
+          ... https://stackoverflow.com/questions/64211386/gitbook-cli-install-error-typeerror-cb-apply-is-not-a-function-inside-graceful
+          * they talk about gitbook-cli working in node v12 and NOT in node v14
+          * they install a newer version of graceful-fs@latest IN gitbook-cli
+            $ cd /usr/local/lib/node_modules/gitbook-cli/node_modules/npm/node_modules/
+            $ npm install graceful-fs@latest --save
+
+       2. How I fixed a "cb.apply is not a function" error while using Gitbook
+          ... https://flaviocopes.com/cb-apply-not-a-function/
+          > a real hack:
+          * this guy commented out code in node_modules:
+            node_modules/gitbook-cli/node_modules/npm/node_modules/graceful-fs/polyfills.js
+
+              >>> PUNT and DO THIS (this is how I got it working):
+            - in MY case the problem code is found here:
+              c:/dev/tw-themes/node_modules/npm/node_modules/graceful-fs/polyfills.js
+              * comment out the lines 62-64:
+                // KJB: HACK to fix STALE gitbook-cli (see: TOOLING.md)
+                // fs.stat = statFix(fs.stat)
+                // fs.fstat = statFix(fs.fstat)
+                // fs.lstat = statFix(fs.lstat)
+              * IT WORKS!
+
+   - The docs server will crash when any docs files change.
+     ... this was even happening when I developed my other project's docs.
+     >>> JUST PUNT and live with this.
+   ```
+
+8. Follow customization suggestions found in [Integrating GitBook with
+   JSDoc to Document Your Open Source Project].  
+
+   Specifically:
+
+   - Setup `docs/styles/website.css`
+   - Disable livereload via "-livereload" option in "plugins" section of `book.json`
+   - Disable social media sharing in toolbar via "-sharing" option in "plugins" section of `book.json`
+   - Adding toolbar links to GitHub/NPM via "toolbar" plugin (configured in `book.json`).
+     Don't forget to do your `$ npx gitbook install` to install the
+     toolbar plugin referenced in `book.json`.
+
+9. Install [`folding-menu`] GitBook plugin that "tames" large left-nav
+   menus by visualizing one section at a time.
+
+   L8TR: Have not done this yet _(wait till our sections become longer)_.
+
+   ```
+   $ npm install --save-dev gitbook-plugin-folding-menu
+   ```
+
+   **book.json**
+   ```js
+   {
+     ...
+     "plugins": [
+       ... other plugins you may be using
+       "folding-menu"
+     ]
+     ...
+     "pluginsConfig": {
+       "folding-menu":	{
+         "animationDuration": 500,
+         "sticky":            true
+       }
+     }
+   }
+   ```
 
 
 <!--- *** SUB-SECTION *************************************************************** --->
@@ -1160,8 +1374,7 @@ package.json
         - DEPLOY APP (NOTE: see CRA for setup required to deploy to a sub-directory ... there is a bit of config)
           "preapp:deploy": "npm run app:prodBuild",
           "app:deploy": "gh-pages --dist public --dest app",
-        - PUBLISH DOCS
-          "l8tr:docs:prepare:do:once":  "gitbook install",
+        - PUBLISH DOCS ?? NOW HANDLED IN: [Setup Documentation Tooling]
           "l8tr:docs:build:COMMENT":    "NOTE: for gitbook build/serve, following diagnostics are useful: --log=debug --debug",
           "l8tr:docs:build":            "gitbook build",
           "l8tr:docs:serve":            "gitbook serve",
@@ -1383,10 +1596,17 @@ KJB Notes --->
   [Setup Documentation Tooling]:  #setup-documentation-tooling
   [Setup Deployment]:             #setup-deployment
 
-[GitHub Pages]:                   https://pages.github.com/
 [js.org]:                         https://js.org/
 [npm]:                            https://www.npmjs.com/
 [Svelte]:                         https://svelte.dev/
 [sveltejs/template]:              https://github.com/sveltejs/template
 [sveltejs/component-template]:    https://github.com/sveltejs/component-template
 [Tailwind CSS]:                   https://tailwindcss.com/
+
+[GitHub Pages]:                   https://pages.github.com/
+
+[GitBook]:                         https://docs.gitbook.com/
+[GitBook command-line interface]:  https://www.npmjs.com/package/gitbook-cli
+[Markdown]:                        https://en.wikipedia.org/wiki/Markdown
+[Integrating GitBook with JSDoc to Document Your Open Source Project]: https://medium.com/@kevinast/integrate-gitbook-jsdoc-974be8df6fb3
+[`folding-menu`]:                  https://github.com/KevinAst/gitbook-plugin-folding-menu
