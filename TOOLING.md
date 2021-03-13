@@ -10,13 +10,11 @@ development of the **tw-themes** project.
 - [Project Resources]
 - [Project Setup]
   - [Setup GitHub Project]
-  - [Setup Library Tooling]
-  - [Setup Tailwind CSS]
-  - [Setup tw-themes]
-  - [Setup Absolute Imports]
-  - [Setup Jest Unit Testing]
-  - [Setup Documentation Tooling]
-  - [Setup Deployment]
+  - [Initialize NPM Project]
+  - [Setup Unit Testing]
+  - [Setup Docs Tooling]
+  - [Setup Library Deployment]
+
 
 <!--- *** SECTION *************************************************************** --->
 # NPM Scripts
@@ -28,22 +26,10 @@ _(organized by task)_:
 ```
 DEVELOPMENT
 ===========
-app:devServe ... AI: ?? launch dev server, with continuous build (watching for code changes)
-                 http://localhost:5000/
-                 NOTE: the internals of this script:
-                       1. invokes the rollup bundler in a "watch" state (to: public/build)
-                       2. implicitly invokes "npm start" to launch the server
+test:watch ..... run test suite, continuously watching for module changes
 
 docs:serve ..... launch documentation server, continuously watching for docs changes
                  NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
-
-start .......... AI: ?? start a static file server from the contents of public/
-                 http://localhost:5000/
-                 NOTE: This is implicitly invoked from app:devServe script
-                       As a result, it CANNOT be renamed :-(
-                 NOTE: You can invoke this explicitly to server the contents of
-                       a production build (i.e. app:prodBuild)
-
 
 TESTING
 =======
@@ -51,35 +37,12 @@ test ........... run test suite, one time
 test:watch ..... run test suite, continuously watching for module changes
 
 
-CODE QUALITY
-============
-app:lint ....... AI: ?? verify code quality, linting BOTH production and test code
-                 NOTE: Real-time linting is ALSO available in the VSCode editor.
+DOCS             NOTE: we PUBLISH our docs
+====
+docs:serve ..... launch docs server, continuously watching for docs changes
+                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
 
-app:check ...... AI: ?? convenience script to:
-                 - verify code quality (lint)
-                 - show outdated installed packages
-                 - run tests (against our master src)
-
-pkgReview ...... AI: ?? show outdated installed packages
-
-
-DEPLOYMENT       NOTE: we DEPLOY the application
-==========
-app:deploy ..... deploy latest application to https://tw-themes.js.org/app/
-                 NOTE: This script FIRST builds the app from scratch
-                       ... via preapp:deploy
-
-app:prodBuild .. build production bundle (to: public/build)
-                 NOTE: This is implicitly invoked from app:deploy
-
-
-app:clean ...... AI: ?? clean all machine-generated app/build directories
-
-
-PUBLISH          NOTE: we PUBLISH the documentation
-=======
-docs:publish ... publish the latest documentation to https://tw-themes.js.org/
+docs:publish ... publish the latest docs to https://tw-themes.js.org/
                  NOTE: this script FIRST builds the docs from scratch
                        ... via predocs:publish
 
@@ -89,6 +52,19 @@ docs:build   ... you can manually build the docs (into the _book/ dir)
                  BECAUSE this build is executed as the first step in docs:publish
 
 docs:clean   ... clean all machine-generated docs directories
+
+
+BUNDLE/DEPLOY    NOTE: we DEPLOY our bundled library to NPM
+=============
+lib:deploy ..... AI: ?? deploy latest library to NPM
+                 NOTE: This script FIRST builds the app from scratch
+                       ... via prelib:deploy
+
+lib:prodBuild .. AI: ?? build production bundle (to: public/build)
+                 NOTE: This is implicitly invoked from lib:deploy
+
+
+lib:clean ...... AI: ?? clean all machine-generated app/build directories
 
 
 MISC
@@ -120,14 +96,14 @@ referencing when/where they were introduced/configured.
 
 Dependency                        | Type        | Usage                     | Refer To
 --------------------------------- | ----------- | ------------------------- | ----------------
-`@babel/core`                     | **TOOLING** | Jest Testing related      | [Setup Jest Unit Testing]
-`@babel/preset-env`               | **TOOLING** | Jest Testing related      | [Setup Jest Unit Testing]
-`babel-jest`                      | **TOOLING** | Jest Testing related      | [Setup Jest Unit Testing]
-`gh-pages`                        | **TOOLING** | Documentation Deployment  | [Setup Documentation Tooling]
-`gitbook-cli`                     | **TOOLING** | Documentation Generation  | [Setup Documentation Tooling]
-`jest`                            | **TOOLING** | Jest Testing Framework    | [Setup Jest Unit Testing]
-`rimraf`                          | **TOOLING** | Various NPM Clean Scripts | [Setup Documentation Tooling]
-`tailwindcss`                     | **TOOLING**<br>**APP** | our peerDependency<br>(what tw-themes is built on) | [Setup Library Tooling]<br>and app code: `src/...`
+`@babel/core`                     | **TOOLING** | Jest Testing related      | [Setup Unit Testing]
+`@babel/preset-env`               | **TOOLING** | Jest Testing related      | [Setup Unit Testing]
+`babel-jest`                      | **TOOLING** | Jest Testing related      | [Setup Unit Testing]
+`gh-pages`                        | **TOOLING** | Docs Deployment           | [Setup Docs Tooling]
+`gitbook-cli`                     | **TOOLING** | Docs Generation           | [Setup Docs Tooling]
+`jest`                            | **TOOLING** | Jest Testing Framework    | [Setup Unit Testing]
+`rimraf`                          | **TOOLING** | Various NPM Clean Scripts | [Setup Docs Tooling]
+`tailwindcss`                     | **TOOLING**<br>**APP** | our peerDependency<br>(what tw-themes is built on) | [Initialize NPM Project]<br>and app code: `src/...`
 
 
 <!--- *** SECTION *************************************************************** --->
@@ -140,12 +116,12 @@ summary:
 tw-themes/
   .git/ ................ our local git repo
   .gitignore ........... git repo exclusions (typically machine generated)
-  _book/ ............... machine generated docs (output of GitBook)  see: "Setup Documentation Tooling"
-  babel.config.js ...... babel configuration used by jest see: "Setup Jest Unit Testing"
-  book.json ............ GitBook configuration see: "Setup Documentation Tooling"
-  docs/ ................ master source of GitBook project docs  see: "Setup Documentation Tooling"
+  _book/ ............... machine generated docs (output of GitBook)  see: "Setup Docs Tooling"
+  babel.config.js ...... babel configuration used by jest see: "Setup Unit Testing"
+  book.json ............ GitBook configuration see: "Setup Docs Tooling"
+  docs/ ................ master source of GitBook project docs  see: "Setup Docs Tooling"
     *.md ............... various Markdown files making up our docs
-  jest.config.js ....... jest unit testing configuration see: "Setup Jest Unit Testing"
+  jest.config.js ....... jest unit testing configuration see: "Setup Unit Testing"
   LICENSE.md ........... our MIT License
   node_modules/ ........ install location of dependent packages (maintained by npm)
   package.json ......... project meta data with dependencies
@@ -176,13 +152,10 @@ were carried out, however in some cases the order can be changed.
 
 **Sub Sections**:
   - [Setup GitHub Project]
-  - [Setup Library Tooling]
-  - [Setup Tailwind CSS]
-  - [Setup tw-themes]
-  - [Setup Absolute Imports]
-  - [Setup Jest Unit Testing]
-  - [Setup Documentation Tooling]
-  - [Setup Deployment]
+  - [Initialize NPM Project]
+  - [Setup Unit Testing]
+  - [Setup Docs Tooling]
+  - [Setup Library Deployment]
 
 
 
@@ -264,17 +237,14 @@ KJB Notes --->
 
 
 <!--- *** SUB-SECTION *************************************************************** --->
-# Setup Library Tooling
+# Initialize NPM Project
 
-Setup Library Tooling
-
-
-This task will setup the basic Node/NPM tooling needed to
-package/build/deploy this utility.
+This task will initialize the project as an NPM project.
 
 At the end of this process you should have:
 
-- The tooling needed to build/deploy a JavaScript utility.
+- **tw-themes** initialized as an NPM project, with it's `tailwindcss`
+  peerDependency.
 
 - Impacted Dependencies:
   ```
@@ -366,448 +336,8 @@ In addition to above:
 KJB Notes --->
 
 
-
 <!--- *** SUB-SECTION *************************************************************** --->
-# Setup Tailwind CSS
-
-??$$ retrofit
-
-The **tw-themes** demo app styles it's components based on
-[Tailwind CSS].
-
-This utility requires a build process that:
-
-  1. Enables tailwind in general _(the `@tailwind` directives found in
-     `src/Main.svelte`)_.
-
-  2. Enable tailwind advanced directives _(`@apply`, `@layer`, etc.)_.
-
-  3. Purging unneeded styles _(for production builds)_. The number of
-     tailwind css classes are massive (over 1.5 meg).  A "production"
-     build can prune this large resource to only what is used by a
-     given application.  This is employed for "production" builds
-     only, because it would be too time consuming to apply this for
-     every development change.
-
-Enabling and configuring the tailwind-portion of the build can be a
-bit confusing, due to the large number of frameworks.  These
-instructions are specific to [Svelte].
-
-At the end of this process you should have:
-
-- [Tailwind CSS] fully integrated in our [Svelte] app
-
-- Impacted Dependencies:
-  ```
-  svelte-preprocess - A Svelte preprocessor with sensible defaults and support for: 
-                      PostCSS, SCSS, Less, Stylus, CoffeeScript, TypeScript, Pug and much more.
-                      ... Svelte's own parser understands only JavaScript, CSS and its HTML-like
-                          syntax. To make it possible to write components in other languages,
-                          such as TypeScript or SCSS, Svelte provides the preprocess API, which
-                          allows to easily transform the content of your markup and your
-                          style/script tags.
-
-  tailwindcss       - A PostCSS plugin for tailwind
-                      ... A utility-first CSS framework for rapidly building custom user interfaces.
-                      ... this is what we are here for
-  
-  autoprefixer      - A PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values
-                      from "Can I Use"
-                      ... like: -webkit- (Chrome, Android, iOS, Safari),
-                                -moz- (FireFox),
-                                -ms- (IE),
-                                -o- (Opera)
-  
-  NOT CURRENTLY INSTALLED/USED: ---------------------------------------------------------------
-  
-  postcss-nesting   - A PostCSS Nesting plugin, letting you nest style rules inside each other, 
-                      following the CSS Nesting specification. ... KJB: hmmmm
-                        /* THIS: */
-                        a, b {
-                          color: red;
-                         
-                          & c, & d {
-                            color: white;
-                          }
-                        }
-                        /* BECOMES: */
-                        a, b {
-                          color: red;
-                        }
-                        a c, a d, b c, b d {
-                          color: white;
-                        }
-  
-  @tailwindcss/ui   - OPTIONAL tailwind ui plugin <<< NO README ... 50K downloads / week
-                      * KJB: I think this is a package of tailwind defs for pre-packaged components
-                             MAY BE a PURCHASED PRODUCT (found a site for that)
-                             ... https://tailwindui.com/
-  ```
-
-- Impacted Files:
-  ```
-  tw-themes/
-    tailwind.config.js ... the tailwind configuration file
-    rollup.config.js ..... modified in support of tailwind
-    src/
-      main.js ............ mainline entry point (redirect to Main.svelte)
-      Main.svelte ........ general place to do setup/config (including Tailwind)
-      App.svelte ......... our top-most App component (launched from Main.svelte)
-  ```
-
-**Instructions**:
-
-- [Official Install Docs](https://tailwindcss.com/docs/installation) ... _not svelte specific_
-- [How to Set Up Svelte with Tailwind CSS](https://dev.to/swyx/how-to-set-up-svelte-with-tailwind-css-4fg5) ... _what I followed_
-- [Svelte & Tailwind Css, minimal install](https://dev.to/paul42/svelte-tailwind-css-minimal-install-ia2) ... _hmmm_
-
-
-**Installation Summary**:
-
-- NOTE: Tailwind build process requires Node.js 12.13.0 or higher.
-
-- install dependencies:
-  ```
-  $ npm install --save-dev svelte-preprocess tailwindcss autoprefixer
-    + autoprefixer@10.2.4
-    + tailwindcss@2.0.3
-    + svelte-preprocess@4.6.9
-  ```
-- add `tailwind.config.js` at root:
-  ```js
-  tailwind.config.js
-  ==================
-                                                // KJB: same as in rollup.config.js
-  const production = !process.env.ROLLUP_WATCH; // or some other env var like NODE_ENV
-  export default {
-    future: { // for tailwind 2.0 compatibility
-      purgeLayersByDefault: true, 
-      removeDeprecatedGapUtilities: true,
-    },
-    plugins: [
-      // for tailwind UI users only
-      // require('@tailwindcss/ui'), KJB: not using @tailwindcss/ui (can't find info on this)
-      // other plugins here
-    ],
-    purge: {
-      content: [
-        "./src/**/*.svelte",
-        // may also want to include base index.html
-      ], 
-      enabled: production // disable purge in dev
-    },
-  };
-  ```
-
-- setup rollup.config.js WITH svelte-preprocess MANAGING tailwindcss and autoprefixer
-  ```diff
-  rollup.config.js
-  ================
-    ...
-  + import sveltePreprocess from 'svelte-preprocess'; // KJB: supporting tailwindCSS
-    ...
-    plugins: [
-      svelte({
-        ...
-  +     // KJB: supporting tailwindCSS
-  +     preprocess: sveltePreprocess({
-  +       // https://github.com/kaisermann/svelte-preprocess/#user-content-options
-  +       sourceMap: !production,
-  +       postcss: {
-  +         plugins: [
-  +           require("tailwindcss"), 
-  +           require("autoprefixer"),
-  +         //require("postcss-nesting"),
-  +         ],
-  +       },
-  +     }),
-        ...
-      }),
-    ],
-    ...
-  ```
-
-- configure Tailwind in our Svelte App
-
-  ```js
-  src/main.js <<< have it direct to Main.svelte
-  ===========
-  import Main from './Main.svelte';
-  
-  const main = new Main({
-    target: document.body,
-  });
-  
-  export default main;
-  ```
-
-  ```html
-  src/Main.svelte <<< general place to do setup/config (including Tailwind)
-  ===============
-  <script>
-   import App from './App.svelte'
-  </script>
-  
-  <!-- launch our App -->
-  <App/>
-  
-  <!-- setup Tailwind CSS (NOTE: do NOT believe lang="postcss" is needed) -->
-  <style global lang="postcss">
-  
-   /* only apply purgecss on utilities, per Tailwind docs */
-   /* purgecss start ignore */
-   @tailwind base;
-   @tailwind components;
-   /* purgecss end ignore */
-  
-   @tailwind utilities;
-  </style>
-  ```
-
-  ```html
-  src/App.js <<< our top-level App component
-  ==========
-  app specific (whatever is needed for our app)
-  ```
-
-- Disable the global.css _(from the svelte template)_ so as to NOT
-  interfere with tailwind css.  Simply remove it from `index.html`.
-  ```diff
-  public/index.html
-  =================
-  - <link rel='stylesheet' href='global.css'>
-  ```
-
-- **TEST:**
-  ```html
-  <p class="bg-red-500">Styled with tailwind ... should be red!</p>
-  ```
-
-- **NOTE:** when changing `Main.svelte` the build is **slow**
-  _(upwards of 20 sec)_ ... **because** of the processing of the
-  `@tailwind` directives.  This overhead is also incurred at the build
-  startup.  **Fortunately**, this file rarely changes.
-
-
-- **NOTE:** A prior rendition of these instructions involved
-  additional npm scripts to run postcss-cli, but Chris Dhanaraj
-  realized that this was NOT needed, since Svelte already had a way
-  to inject CSS and svelte-preprocess that runs on every Svelte
-  file.
-
-- **UNRESOLVED:**
-  FOR PURGING: Svelte has a `class:` binding syntax that isn't supported by
-  Tailwind out of the box. There is an open discussion for this.
-
-  - [Open Discussion](https://github.com/tailwindlabs/tailwindcss/discussions/1731)
-    Currently Tailwind’s default purge doesn’t match Svelte’s class: directive.
-    <div class:bg-red-500={true} />
-    SO: bg-red-500 will be removed in prod:
-
-_My personal Detailed Notes are "hidden" (in comment form) in this doc ..._
-
-<!--- Comment out KJB Notes
-**Details**:
-```
-- don't understand various <script> qualifiers
-
-  <style global lang="postcss"> ... 
-                                ... INTERESTING: global promotes global directives (all components regardless of DOM hierarchy)
-  
-  <style> ... INTERESTING: I can utilize tailwind function in a <style> tag that is NOT qualified with lang="postcss"
-
-- bundled css output size
-  * my public/build/bundle.css is 3 MEG (3,221,102) <<< on a DEV build
-  *                               5 K   (    5,046) <<< on a PROD build <<< KOOL
-```
---->
-
-
-
-
-<!--- *** SUB-SECTION *************************************************************** --->
-# Setup tw-themes
-
-??$$ retrofit
-
-Our application color themes are provided through the **tw-themes**
-utility.  This is currently a faux dependency _(i.e. simulated)_,
-because it is **sourced here**.  However it has the potential of being
-published as a full fledged npm library.  Please refer to the
-[tw-themes README](./src/util/ui/tw-themes/README.md) for full
-details.
-
-As a general rule, it is configured by following the "Getting Started"
-README instructions.
-
-- The key aspect is we create an application module _(see
-  `src/layout/colorTheme.js`)_ that promotes the `TwThemes` object, from which
-  the remainder of the API is gleaned.
-
-- From a **tooling perspective**, we must inform tailwind of our
-  **Context Colors**, by referencing this `TwThemes` object in
-  `tailwind.config.js`, through the following snippet:
-
-  ```js
-  tailwind.config.js
-  ==================
-  import TwThemes from './src/layout/colorTheme';
-
-  export default {
-
-    ... snip snip
-
-    // define our abstract Context Colors
-    theme: {
-      extend: {
-        colors: TwThemes.colorConfig(),
-      },
-    },
-
-    ... snip snip
-  };
-  ```
-
-  **ISSUE:**
-
-  There is an **issue** here in that we are importing application code
-  in this configuration file, which means it must support **ES
-  Modules**.
-
-  Currently, tailwind does NOT support ES Modules in it's
-  configuration file.
-
-  **FIX:**
-
-  To work around this, our `rollup.config.js` resolves this
-  configuration file, and passes it directly to the tailwindcss
-  plugin function:
-
-  ```js
-  rollup.config.js
-  ================
-  import tailwindcss    from 'tailwindcss';          // NEW: in support of ES Modules
-  import tailwindConfig from './tailwind.config.js'; //      (found in tailwind.config.js)
-  ... snip snip
-  export default {
-    ... snip snip
-    plugins: [
-      svelte({
-        ... snip snip
-        preprocess: sveltePreprocess({
-          ... snip snip
-          postcss: {
-            plugins: [
-              ... snip snip
-           // require("tailwindcss"),      // ... NEW: normal usage
-              tailwindcss(tailwindConfig), // ... NEW: in support of ES Modules (in tailwind.config.js)
-  ```
-
-
-
-<!--- *** SUB-SECTION *************************************************************** --->
-# Setup Absolute Imports
-
-??$$ retrofit
-
-TODO: ?? update this when we start using it
-
-**NOTE**: Due to a bug in the [alias rollup
-plugin](https://www.npmjs.com/package/@rollup/plugin-alias), resulting
-in duplicate JS class definitions, we are currently **NOT** using
-Absolute Imports _(details
-[here](https://github.com/rollup/plugins/issues/296)
-and
-[here](https://stackoverflow.com/questions/61756633/svelte-compiler-generating-multiple-javascript-class-definitions))_
-
-To alleviate the pain of relative path imports (for example):
-
-```js
-import TreeView  from "../../../../util/comp/TreeView.svelte";
-```
-
-We enable absolute imports, where tilde (`~/`) is the src root
-(`src/`):
-
-```js
-import TreeView  from "~/util/comp/TreeView.svelte";
-```
-
-
-**Notes**:
-
-- When using defined aliases, **you must supply the extensions**
-  _(`.js`, `.svelte`, etc.)_
-
-- You cannot prefix with `src/` out of the box _(without this
-  alias utility)_.
-
-- Currently our unit tests may not import any code that uses alias imports
-  ... _because jest **does NOT** utilize rollup_
-
-- You can define as many aliases as you like
-
-- You can even employ regexp _(see [alias
-  docs](https://www.npmjs.com/package/@rollup/plugin-alias) for
-  details)_
-
-
-**Links**:
-- [Absolute Paths in Svelte](https://dev.to/sjafferi/absolute-paths-in-svelte-488c)
-- [npm: @rollup/plugin-alias](https://www.npmjs.com/package/@rollup/plugin-alias)
-
-At the end of this process you should have:
-
-- The ability to utilize absolute imports.
-
-- Impacted Dependencies:
-  ```
-  @rollup/plugin-alias
-  ```
-
-- Impacted Files:
-  ```
-  tw-themes/
-    rollup.config.js ... modified to include alias configuration (Absolute Imports)
-  ```
-
-
-**Installation Details**:
-
-- Install required dependencies (@rollup/plugin-alias):
-  ```
-  $ npm install --save-dev @rollup/plugin-alias
-    + @rollup/plugin-alias@3.1.0
-      added 1 package from 1 contributor and audited 266253 packages in 7.754s
-  ```
-
-- Configure `rollup.config.js` _(in support of **Absolute Imports**)_
-
-  * For details, see embedded comments (`Absolute Imports`) in `rollup.config.js`
-
-  * **rollup.config.js** _sample_
-    ```js
-    import alias from '@rollup/plugin-alias';  // KJB: in support of: Absolute Imports
-
-    export default {
-      ...
-      plugins: [
-        ...
-        // KJB: Absolute Imports
-        alias({
-          entries: [
-            // allow:      import TreeView  from "~/util/comp/TreeView.svelte";
-            // instead of: import TreeView  from "../../../../util/comp/TreeView.svelte";
-            { find: '~', replacement: 'src' },
-          ]
-        }),
-      ]
-    };
-    ```
-
-
-<!--- *** SUB-SECTION *************************************************************** --->
-# Setup Jest Unit Testing
+# Setup Unit Testing
 
 **tw-themes** uses [Jest](https://jestjs.io/en/) as it's unit
 testing framework.
@@ -831,8 +361,8 @@ At the end of this process you should have:
 - Impacted Files:
   ```
   tw-themes/
-    babel.config.js ...... babel configuration used by jest  [see: "Setup Jest Unit Testing")
-    jest.config.js ....... jest unit testing configuration [see: "Setup Jest Unit Testing")
+    babel.config.js ...... babel configuration used by jest  [see: "Setup Unit Testing")
+    jest.config.js ....... jest unit testing configuration [see: "Setup Unit Testing")
   ```
 
 **Installation Details**:
@@ -898,7 +428,7 @@ At the end of this process you should have:
   ```
 
 <!--- *** SUB-SECTION *************************************************************** --->
-# Setup Documentation Tooling
+# Setup Docs Tooling
 
 **tw-themes** promotes it's documentation through [GitHub Pages],
 using [GitBook], which is a [Markdown] based solution.  This
@@ -1141,7 +671,16 @@ At the end of this process you should have:
 
 
 <!--- *** SUB-SECTION *************************************************************** --->
-# Setup Deployment
+# Setup Library Deployment
+
+This task will setup the basic Node/NPM tooling needed to
+package/build/deploy the **tw-themes** library.
+
+At the end of this process you should have:
+
+- The tooling needed to build/deploy the **tw-themes** utility.
+
+- ?? more
 
 ??$$ retrofit
 
@@ -1158,7 +697,7 @@ At the end of this process you should have:
 
 - The ability to deploy the demo app (to github pages)
   ```
-  $ npm run app:deploy
+  $ npm run lib:deploy
   ```
 
 - Impacted Dependencies:
@@ -1168,7 +707,7 @@ At the end of this process you should have:
 
 - Impacted Scripts:
   ```
-  app:deploy
+  lib:deploy
   docs:publish ?? AI
   ```
 
@@ -1242,7 +781,7 @@ public/index.html
 +   <script defer src='build/bundle.js'></script>
 ```
 
-**Add `app:deploy` Script**
+**Add `lib:deploy` Script**
 
 Add the following scripts to `package.json`:
 
@@ -1252,8 +791,8 @@ package.json
 {
   ...
   "scripts": {
-    "preapp:deploy": "npm run app:prodBuild",
-    "app:deploy": "gh-pages --dist public --dest app",
+    "prelib:deploy": "npm run lib:prodBuild",
+    "lib:deploy": "gh-pages --dist public --dest app",
     ... snip snip
   }  
 }
@@ -1372,9 +911,9 @@ package.json
         - TERMINOLOGY:
           "terminology:COMMENT":   "app is DEPLOYED, and docs are PUBLISHED",
         - DEPLOY APP (NOTE: see CRA for setup required to deploy to a sub-directory ... there is a bit of config)
-          "preapp:deploy": "npm run app:prodBuild",
-          "app:deploy": "gh-pages --dist public --dest app",
-        - PUBLISH DOCS ?? NOW HANDLED IN: [Setup Documentation Tooling]
+          "prelib:deploy": "npm run lib:prodBuild",
+          "lib:deploy": "gh-pages --dist public --dest app",
+        - PUBLISH DOCS ?? NOW HANDLED IN: [Setup Docs Tooling]
           "l8tr:docs:build:COMMENT":    "NOTE: for gitbook build/serve, following diagnostics are useful: --log=debug --debug",
           "l8tr:docs:build":            "gitbook build",
           "l8tr:docs:serve":            "gitbook serve",
@@ -1433,10 +972,10 @@ KEY: GREAT        - we can use same heuristic for dev and prod deployment
           * apply the "DO THIS" (above)
           * test app
             - in dev
-              $ npm run app:start
+              $ npm run lib:start
                 ... http://localhost:3000/
             - in prod
-              $ npm run app:deploy
+              $ npm run lib:deploy
                 ... https://tw-themes.js.org/app/
 
       > GENERAL
@@ -1588,13 +1127,10 @@ KJB Notes --->
 [Project Resources]:              #project-resources
 [Project Setup]:                  #project-setup
   [Setup GitHub Project]:         #setup-github-project
-  [Setup Library Tooling]:        #setup-library-tooling
-  [Setup Tailwind CSS]:           #setup-tailwind-css
-  [Setup tw-themes]:              #setup-tw-themes
-  [Setup Absolute Imports]:       #setup-absolute-imports
-  [Setup Jest Unit Testing]:      #setup-jest-unit-testing
-  [Setup Documentation Tooling]:  #setup-documentation-tooling
-  [Setup Deployment]:             #setup-deployment
+  [Initialize NPM Project]:       #initialize-npm-project
+  [Setup Unit Testing]:           #setup-unit-testing
+  [Setup Docs Tooling]:           #setup-docs-tooling
+  [Setup Library Deployment]:     #setup-library-deployment
 
 [js.org]:                         https://js.org/
 [npm]:                            https://www.npmjs.com/
