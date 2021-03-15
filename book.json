@@ -28,5 +28,100 @@
         }
       ]
     }
+  },
+
+  "variables": { 
+    "guide": {
+      "intro": "[Introduction](/intro.md)",
+      "install": "[Install](/install.md)",
+      "start": "[Getting Started](/start.md)",
+      "concepts": "[Concepts](/concepts.md)",
+
+      "contextColors":  "[Context Colors](/concepts/contextColors.md)",
+      "contextColors$": "[Context Colors (Color Abstraction)](/concepts/contextColors.md)",
+      "contextColor":   "[Context Color](/concepts/contextColors.md)",
+
+      "themes":     "[Themes](/concepts/themes.md)",
+      "themes$":    "[Themes (Real Colors)](/concepts/themes.md)",
+      "realColors": "[Real Colors](/concepts/themes.md)",
+
+      "pullItAllTogether":           "[Pulling it all together](/concepts/pullTogether.md)",
+      "pullTheseTwoAspectsTogether": "[pull these two aspects together](/concepts/pullTogether.md)",
+
+      "contextColorShades": "[Context Color Shades](/concepts/shades.md)",
+      "colorShading":       "[Color Shading](/concepts/shades.md)",
+
+      "shadeInversion":        "[Shade Inversion](/concepts/shadeInversion.md)",
+      "invertYourColorShades": "[invert your color shades](/concepts/shadeInversion.md)",
+
+      "darkMode":  "[Dark Mode](/concepts/darkMode.md)",
+      "darkTheme": "[Dark Theme](/concepts/darkMode.md)",
+
+      "colorSystems": "[Color Systems](/concepts/colorSystems.md)",
+      "colorSystem":  "[Color System](/concepts/colorSystems.md)",
+
+      "appState":        "[App State](/concepts/appState.md)",
+      "aNoteOnAppState": "[A Note on App State](/concepts/appState.md)",
+
+      "TwThemesReactivity":        "[TwThemes Reactivity](/concepts/reactivity.md)",
+      "aNoteOnTwThemesReactivity": "[A Note on TwThemes Reactivity](/concepts/reactivity.md)",
+
+      "aNoteOnESModulesInTailwindConfiguration": "[A Note on ES Modules in Tailwind Configuration](/concepts/esModules.md)",
+
+      "howDoItKnow":        "[How do it know?](/concepts/how.md)"
+    },
+    "api": {
+      "api": "[API](/api.md)",
+
+      "initTwThemes": "[`initTwThemes()`](/api/initTwThemes.md)",
+      "initTwThemes$": "[`initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes`]: #inittwthemes`](/api/initTwThemes.md)",
+
+      "TwThemes": "[`TwThemes`](/api/TwThemes.md)",
+
+        "activateTheme":  "[`activateTheme()`](/api/TwThemes/activateTheme.md)",
+        "activateTheme$": "[`activateTheme({[themeName], [invertShade]}): [activeThemeName, activeInvertShade]`](/api/TwThemes/activateTheme.md)",
+        
+        "activateNextTheme":  "[`activateNextTheme()`](/api/TwThemes/activateNextTheme.md)",
+        "activateNextTheme$": "[`activateNextTheme(): activeThemeName`](/api/TwThemes/activateNextTheme.md)",
+        
+        "activatePriorTheme":  "[`activatePriorTheme()`](/api/TwThemes/activatePriorTheme.md)",
+        "activatePriorTheme$": "[`activatePriorTheme(): activeThemeName`](/api/TwThemes/activatePriorTheme.md)",
+      
+        "toggleInvertShade":  "[`toggleInvertShade()`](/api/TwThemes/toggleInvertShade.md)",
+        "toggleInvertShade$": "[`toggleInvertShade(): activeInvertShade`](/api/TwThemes/toggleInvertShade.md)",
+      
+        "getThemes":  "[`getThemes()`](/api/TwThemes/getThemes.md)",
+        "getThemes$": "[`getThemes(): Theme[]`](/api/TwThemes/getThemes.md)",
+      
+        "getActiveThemeName":  "[`getActiveThemeName()`](/api/TwThemes/getActiveThemeName.md)",
+        "getActiveThemeName$": "[`getActiveThemeName(): activeThemeName`](/api/TwThemes/getActiveThemeName.md)",
+      
+        "getActiveInvertShade":  "[`getActiveInvertShade()`](/api/TwThemes/getActiveInvertShade.md)",
+        "getActiveInvertShade$": "[`getActiveInvertShade(): activeInvertShade`](/api/TwThemes/getActiveInvertShade.md)",
+      
+        "colorConfig":  "[`colorConfig()`](/api/TwThemes/colorConfig.md)",
+        "colorConfig$": "[`colorConfig(): TwColors`](/api/TwThemes/colorConfig.md)",
+
+      "Schema":  "[`Schema`](/api/Schema.md)",
+        
+      "Themes":  "[`Themes`](/api/Themes.md)",
+      "Theme":   "[`Theme`](/api/Themes.md)",
+        
+      "TwColors":  "[`TwColors`](/api/TwColors.md)"
+    },
+    "ext": {
+      "tailwindcss": "[tailwindcss](https://tailwindcss.com/)",
+      "KISS": "[KISS Principle](https://en.wikipedia.org/wiki/KISS_principle)",
+      "cssVars": "[CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)",
+      "svelte": "[Svelte](https://svelte.dev/)",
+      "Material": "[Material](https://material.io/design/color)",
+      "IBM": "[IBM](https://www.ibm.com/design/language/color/)",
+      "OpenColor": "[Open Color](https://yeun.github.io/open-color/)",
+      "MaterialIOColorConfigTool": "[Material IO Color Config Tool](https://material.io/resources/color)",
+      "ColorTheory": "[Color theory and the color wheel](https://www.canva.com/colors/color-wheel/)",
+      "ColorCalculator": "[Color Calculator](https://www.sessions.edu/color-calculator/)",
+      "inLikeFlynn": "[in like flynn](https://en.wikipedia.org/wiki/In_like_Flynn)"
+    }
   }
+
 }
