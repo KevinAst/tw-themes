@@ -13,6 +13,7 @@ development of the **tw-themes** project.
   - [Initialize NPM Project]
   - [Setup Unit Testing]
   - [Setup Docs Tooling]
+  - [Setup js.org sub-domain]
   - [Setup Library Deployment]
 
 
@@ -155,6 +156,7 @@ were carried out, however in some cases the order can be changed.
   - [Initialize NPM Project]
   - [Setup Unit Testing]
   - [Setup Docs Tooling]
+  - [Setup js.org sub-domain]
   - [Setup Library Deployment]
 
 
@@ -671,6 +673,172 @@ At the end of this process you should have:
 
 
 <!--- *** SUB-SECTION *************************************************************** --->
+# Setup js.org sub-domain
+
+To accommodate a more professional URL, [js.org] supports a
+sub-domain registration process.
+
+At the end of this process you should have:
+
+- A github pages `js.org` sub-domain: 
+  * FROM: https://kevinast.github.io/tw-themes/
+  * TO:   https://tw-themes.js.org/
+
+To accomplish this, simply follow the instructions on [js.org].  Here
+is my summary _(more notes hidden here in comment form)_:
+
+```
+ - First setup a preliminary set of docs that are deployable to
+   [GitHub Pages].  `js.org` requires "reasonable content" before
+   they will approve your request.  Alternatively you can create
+   some temporary content that shows your intent.
+
+
+ - Create a CNAME file at gh-pages root.  In our case this will live
+   in `docs/`:
+   
+   * docs/CNAME
+     ==========
+     tw-themes.js.org
+
+   * Deploy your latest docs to [GitHub Pages]:
+
+     ```
+     $ npm run docs:publish
+     ```
+
+     NOTE: Once this is done, you will not be able to browse your gh-pages
+           till js.org processes your PR (below).
+
+ - Fork the `js.org` project and issue a PR to introduce our sub-domain
+   * new entry in: cnames_active.js
+     ... "tw-themes": "kevinast.github.io/tw-themes",
+
+ - Monitor PR acceptance (will take 24 hrs).
+
+ - Once complete the sub-domain should be active
+
+   NOTE: the original gh-pages link to the new sub-domain
+```
+
+<!--- Comment out KJB Notes
+
+****************
+* setup js.org * ... can be done FIRST OR LAST
+****************
+
+  - either setup a preliminary set of docs -or- put a dummy page in place
+    ... needed to be accepted by js.org
+
+    * following temporary html file:
+      - NOTE: has to be "reasonable content"
+              - per their README, their focus is on granting subdomain requests to
+                projects with a clear relation to the JavaScript ecosystem and
+                community (NOT personal pages, blogs, etc.).
+              - Projects such as NPM packages, libraries, tools that have a clear
+                direct relation to JavaScript, will be accepted when requesting a
+                JS.ORG subdomain.
+              - KJB: My experience is that by a) placing limited content in, and b) referencing other project docs and your README
+                     IT WILL BE ACCEPTED
+
+      _docs/index.html
+      ================
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="utf-8" />
+          <title>tw-themes</title>
+        </head>
+        <body>
+          <h1>tw-themes</h1>
+      
+          <p><i>... minimalist form validation with powerful results</i></p>
+          <p>
+            Validating forms has notoriously been a painful development
+            experience. Implementing client side validation in a user friendly way
+            is a tedious and arduous process • you want to validate fields only at
+            the appropriate time (when the user has had the chance to enter the
+            data) • you want to present validation errors in a pleasing way • you
+            may need to apply custom validation (specific to your application
+            domain) • etc.
+          </p>
+      
+          <p>
+            Even with the introduction of HTML5's Form Validation, it is still
+            overly complex, and doesn't address many common scenarios (mentioned
+            above). Without the proper approach, form validation can be one of the
+            most difficult tasks in web development.
+          </p>
+      
+          <p>
+            This sub-domain is currently work-in-progress and will
+            eventually hold BOTH the formal documentation and the deployed app
+            <i>(similar to other projects under my control: e.g. <a href="http://feature-u.js.org/">http://feature-u.js.org/</a>)</i>
+          </p>
+      
+          <p>
+            For now you may wish to take a look at the initial <a href="https://github.com/KevinAst/tw-themes/blob/main/README.md">Design Docs</a>.
+          </p>
+      
+        </body>
+      </html>
+
+    * deploy file to gh-pages
+      $ npx gh-pages --dist _docs
+
+    * test site
+      ... https://KevinAst.github.io/tw-themes
+
+  - setup the js.org sub-domain alias: https://tw-themes.js.org/
+    ... see: c:/data/tech/dev/GitHub.txt (configure the js.org subdomain) ... prob a bit stale
+    * KEY:  js.org offers sub-domain that points to GitHub Pages
+    * NICE: https://tw-themes.js.org/
+            https://kevinast.github.io/tw-themes
+
+    * setup CNAME file at root and deploy to gh-pages
+        CNAME
+        =====
+        tw-themes.js.org
+
+       - issue a PR that adds my sub-domain to js.org
+         * all done from the web
+         * IF NEED BE (in lue of syncing old repo - which is a major deal), simply delete your copy of an old dns.js.org fork
+           - from your github dns.js.org fork
+           - click settings
+           - at bottom click delete repository
+         * from the github js-org/dns.js.org project
+           ... https://github.com/js-org/js.org     <<< FYI: used to be dns.js.org
+         * click the FORK button
+           ... this adds the dns.js.org to MY github
+           ... https://github.com/KevinAst/js.org    <<< FYI: used to be dns.js.org
+             * via the web, edit the cnames_active.js file
+             * add your entry:
+                   "tw-themes": "kevinast.github.io/tw-themes",
+             * check in commit:
+               >>> KEY: use this description (they will change it to this if you don't):
+               ... NOT: adding tw-themes sub-domain
+               ... YES: tw-themes.js
+             * issue New Pull Request
+             * back in the dns.js.org, monitor your Pull Request
+               ... https://github.com/js-org/js.org/pulls
+                   https://github.com/js-org/js.org/pull/5555
+               ... should take effect within 24 hrs
+               - confirm: web site NO LONGER SERVES till they enact this
+                 https://kevinast.github.io/tw-themes/
+               - wait for sub-domain to go live (24 hrs)
+                 * FIRST they will approve it
+                 * THEN they will apply the domain
+                 * ONCE ACCEPTED & MERGED 
+                 * WORKS: should be able to now see the url:
+                   ... https://tw-themes.js.org/
+
+KJB Notes --->
+
+
+
+
+
+<!--- *** SUB-SECTION *************************************************************** --->
 # Setup Library Deployment
 
 This task will setup the basic Node/NPM tooling needed to
@@ -684,16 +852,11 @@ At the end of this process you should have:
 
 ??$$ retrofit
 
-**tw-themes** is deployed on [GitHub Pages] (both the demo
-web-app and our documentation).
+NOPE: **tw-themes** app is deployed on [GitHub Pages] <<< NOT
 
 At the end of this process you should have:
 
-- A github pages `js.org` sub-domain: 
-  * FROM: https://kevinast.github.io/tw-themes/
-  * TO:   https://tw-themes.js.org/
-
-- AI: ?? The ability to deploy the formal docs (to github pages)
+- ?? retrofit
 
 - The ability to deploy the demo app (to github pages)
   ```
@@ -708,56 +871,7 @@ At the end of this process you should have:
 - Impacted Scripts:
   ```
   lib:deploy
-  docs:publish ?? AI
   ```
-
-
-**Install gh-pages**
-
-All deployment scripts use the `gh-pages` utility, that simplifies publishing resources
-to [GitHub Pages].  Install as follows:
-
-```
-$ npm install --save-dev gh-pages
-```
-
-
-**Establish `js.org` sub-domain**
-
-Both our app and docs are deployed to [GitHub Pages].  To accommodate a
-more professional URL, [js.org] supports a sub-domain, so that our
-site is transformed:
-
-- **from this**: https://kevinast.github.io/tw-themes/
-- **to this**:   https://tw-themes.js.org/
-
-Simply follow the instructions on [js.org].  Here is my summary _(more
-notes hidden here in comment form)_:
-
-```
- - create a temporary dir to deploy content to the gh-pages branch.
-   * EX: _docs/
-   * NOTE: can deploy to gh-pages branch at any time with:
-           $ npx gh-pages --dist _docs
-
- - create a temporary index.html page at gh-pages root:
-   * NOTE: this must convey enough content to be accepted as a legit npm package
-
- - create a CNAME file at gh-pages root:
-   * CNAME
-     =====
-     tw-themes.js.org
-   * NOTE: Once this is done, you will not be able to browse your gh-pages
-           till js.org processes PR (below)
-
- - issue a js.org PR to introduce our sub-domain
-   * new entry in: cnames_active.js
-     ... "tw-themes": "kevinast.github.io/tw-themes",
-   * monitor PR acceptance (will take 24 hrs)
-
- - once complete the sub-domain should be active
-   * NOTE: the original gh-pages link to the new sub-domain
-```
 
 **Relative App Resources**
 
@@ -820,16 +934,6 @@ package.json
       ********************************
       * SUMMARIZE DEPLOYMENT PROCESS *
       ********************************
-
-      > KEY: We are deploying BOTH docs and app on the same site
-
-      * setup js.org sub-domain web alias (takes time to resolve)
-        - for detailed steps see: "setup js.org" below 
-        - FROM: https://kevinast.github.io/tw-themes
-          TO:   https://tw-themes.js.org
-        - you can actually do this at ANY TIME (first or last)
-          BECAUSE: there is NO build dependency on the deployment domain
-          EVERYTHING IS USING RELATIVE RESOURCES!!!
 
       > following steps assume the js.org sub-domain is in place
         ... but (again) you can actually do this first or last
@@ -998,122 +1102,6 @@ KEY: GREAT        - we can use same heuristic for dev and prod deployment
         - bookmark app
           
 
-      ****************
-      * setup js.org * ... can be done FIRST OR LAST
-      ****************
-
-      * I am going to be deploying BOTH app and docs to gh-pages
-
-        - prime the pump by putting a dummy page in the root:
-
-          * create _docs directory where our machine generated gitbook will eventually be placed
-            - .gitignore it
-              # machine generated docs (from GitBook)
-              /_book/
-              /_docs/
-
-          * add following temporary html file to this _docs 
-            - NOTE: has to be "reasonable content"
-                    - per their README, their focus is on granting subdomain requests to
-                      projects with a clear relation to the JavaScript ecosystem and
-                      community (NOT personal pages, blogs, etc.).
-                    - Projects such as NPM packages, libraries, tools that have a clear
-                      direct relation to JavaScript, will be accepted when requesting a
-                      JS.ORG subdomain.
-                    - KJB: My experience is that by a) placing limited content in, and b) referencing other project docs and your README
-                           IT WILL BE ACCEPTED
-
-            _docs/index.html
-            ================
-            <!DOCTYPE html>
-            <html lang="en">
-              <head>
-                <meta charset="utf-8" />
-                <title>tw-themes</title>
-              </head>
-              <body>
-                <h1>tw-themes</h1>
-            
-                <p><i>... minimalist form validation with powerful results</i></p>
-                <p>
-                  Validating forms has notoriously been a painful development
-                  experience. Implementing client side validation in a user friendly way
-                  is a tedious and arduous process • you want to validate fields only at
-                  the appropriate time (when the user has had the chance to enter the
-                  data) • you want to present validation errors in a pleasing way • you
-                  may need to apply custom validation (specific to your application
-                  domain) • etc.
-                </p>
-            
-                <p>
-                  Even with the introduction of HTML5's Form Validation, it is still
-                  overly complex, and doesn't address many common scenarios (mentioned
-                  above). Without the proper approach, form validation can be one of the
-                  most difficult tasks in web development.
-                </p>
-            
-                <p>
-                  This sub-domain is currently work-in-progress and will
-                  eventually hold BOTH the formal documentation and the deployed app
-                  <i>(similar to other projects under my control: e.g. <a href="http://feature-u.js.org/">http://feature-u.js.org/</a>)</i>
-                </p>
-            
-                <p>
-                  For now you may wish to take a look at the initial <a href="https://github.com/KevinAst/tw-themes/blob/main/README.md">Design Docs</a>.
-                </p>
-            
-              </body>
-            </html>
-
-          * deploy file to gh-pages
-            $ npx gh-pages --dist _docs
-
-          * test site
-            ... https://KevinAst.github.io/tw-themes
-
-        - setup the js.org sub-domain alias: https://tw-themes.js.org/
-          ... see: c:/data/tech/dev/GitHub.txt (configure the js.org subdomain) ... prob a bit stale
-          * KEY:  js.org offers sub-domain that points to GitHub Pages
-          * NICE: https://tw-themes.js.org/
-                  https://kevinast.github.io/tw-themes
-
-          * setup CNAME file at root and deploy to gh-pages
-              CNAME
-              =====
-              tw-themes.js.org
-
-             - issue a PR that adds my sub-domain to js.org
-               * all done from the web
-               * IF NEED BE (in lue of syncing old repo - which is a major deal), simply delete your copy of an old dns.js.org fork
-                 - from your github dns.js.org fork
-                 - click settings
-                 - at bottom click delete repository
-               * from the github js-org/dns.js.org project
-                 ... https://github.com/js-org/js.org     <<< FYI: used to be dns.js.org
-               * click the FORK button
-                 ... this adds the dns.js.org to MY github
-                 ... https://github.com/KevinAst/js.org    <<< FYI: used to be dns.js.org
-                   * via the web, edit the cnames_active.js file
-                   * add your entry:
-                         "tw-themes": "kevinast.github.io/tw-themes",
-                   * check in commit:
-                     >>> KEY: use this description (they will change it to this if you don't):
-                     ... NOT: adding tw-themes sub-domain
-                     ... YES: tw-themes.js
-                   * issue New Pull Request
-                   * back in the dns.js.org, monitor your Pull Request
-                     ... https://github.com/js-org/js.org/pulls
-                         https://github.com/js-org/js.org/pull/5555
-                     ... should take effect within 24 hrs
-                     - confirm: web site NO LONGER SERVES till they enact this
-                       https://kevinast.github.io/tw-themes/
-                     - wait for sub-domain to go live (24 hrs)
-                       * FIRST they will approve it
-                       * THEN they will apply the domain
-                       * ONCE ACCEPTED & MERGED 
-                       * WORKS: should be able to now see the url:
-                         ... https://tw-themes.js.org/
-
 KJB Notes --->
 
 
@@ -1130,6 +1118,7 @@ KJB Notes --->
   [Initialize NPM Project]:       #initialize-npm-project
   [Setup Unit Testing]:           #setup-unit-testing
   [Setup Docs Tooling]:           #setup-docs-tooling
+  [Setup js.org sub-domain]:      #setup-jsorg-sub-domain
   [Setup Library Deployment]:     #setup-library-deployment
 
 [js.org]:                         https://js.org/
