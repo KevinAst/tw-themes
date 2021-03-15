@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · tw-themes</title>
+        <title>Concepts · tw-themes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -59,8 +59,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="concepts/contextColors.html" />
     
+    
+    <link rel="prev" href="start.html" />
     
 
     </head>
@@ -91,7 +93,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -137,7 +139,7 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="concepts.html">
+        <li class="chapter active" data-level="2.1" data-path="concepts.html">
             
                 <a href="concepts.html">
             
@@ -530,7 +532,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Concepts</a>
     </h1>
 </div>
 
@@ -545,89 +547,22 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- THIS is now in logo
-# tw-themes
-
-> _... powerful tailwind color themes **(dynamically selectable at run-time)**_
--->
-<!-- LOGO: centered, WITH diagram border
-<p style="text-align: center;">
-  <img class="diagram"
-       src="img/tw-themes-logo.png"
-       alt="tw-themes"
-       width="50%">
-</p>
--->
-<!-- LOGO: left, NO diagram border -->
-<p>
-  <img src="img/tw-themes-logo.png" alt="tw-themes" width="50%">
-</p>
-
-
-<p>Developing <strong>dynamic color themes</strong> <em>that are dynamically selectable
-at run-time</em> is <strong>a tedious and arduous process</strong>.  Ideally <strong>Dark
-Mode</strong> would also be included in our requirements list!  While
-<strong>tailwind</strong> provides a powerful foundation to work from, it has no
-real support for the dynamics that are needed for this task.</p>
-<p>If you are a <strong>tailwind</strong> user <em>that needs <strong>dynamic color themes</strong></em>,
-this utility may be just what you are looking for!</p>
-<!--- Badges ---> 
-<p><a href="https://www.npmjs.com/package/tw-themes" target="_blank"><img src="https://img.shields.io/npm/v/tw-themes.svg" alt="NPM Version
-Badge"></a></p>
-<h2 id="introduction">Introduction</h2>
+                                <h1 id="concepts">Concepts</h1>
 <p><strong>tw-themes</strong> is a <a href="https://tailwindcss.com/" target="_blank">tailwindcss</a> utility that facilitates
 <em><strong>dynamic color themes that are selectable at run-time</strong></em>.</p>
-<p>Using <strong>tw-themes</strong> ...</p>
+<p>The following sections discuss the basic concepts of <strong>tw-themes</strong>:</p>
 <ul>
-<li><p>You define and use <a href="concepts/contextColors.html">Context Colors</a>.  These are
-<em>abstract colors that have meaning in the context of your
-application</em>.  You define them however you wish <em>(such as <code>primary</code>
-and <code>secondary</code>)</em>, and reference them throughout your markup with
-<strong>tailwind</strong>&apos;s standard color syntax <em>(ex: <code>text-primary</code>,
-<code>bg-secondary-400</code>, etc.)</em>.</p>
-</li>
-<li><p>You then map <strong>Real Colors</strong> to your <strong>Context Colors</strong> through one
-or more <a href="concepts/themes.html">Themes</a>, which can be selected at run-time to
-<strong>change your application colors on the fly!</strong></p>
-<p>Your colors can be defined either through the <strong>tailwind</strong>&apos;s
-standard color pallet, or your own custom colors <em>(or a combination
-of both)</em>.</p>
-<p>It&apos;s common to use <a href="concepts/shades.html">Color Shading</a> to accentuate various
-aspects of your UI.  In <strong>tw-themes</strong> you can define your own shade
-nomenclature <em>(e.g. <code>primaryLight</code>, <code>primaryDark</code>)</em>, or piggy back
-off of <strong>tailwind</strong>&apos;s numeric shade scale <em>(e.g. <code>primary-50</code>,
-<code>primary-100</code>, <code>primary-200</code>, etc.)</em>.</p>
-</li>
-<li><p>Speaking of color shades, <strong>tw-themes</strong> even allows you to
-<a href="concepts/shadeInversion.html">invert your color shades</a> at run-time <em>(light-to-dark,
-and dark-to-light)</em>, <strong>in effect doubling the number of color themes
-available</strong>, and potentially supporting an <strong>automatic dark mode
-theme</strong> <em>(depending on how your colors are implemented)</em>.</p>
-<p>Of course, you can explicitly define your own
-<a href="concepts/darkMode.html">Dark Mode</a> with minimal effort <em>(if
-<a href="concepts/shadeInversion.html">Shade Inversion</a> doesn&apos;t produce the desired effect)</em>
-... it&apos;s merely a new theme!  Unlike <strong>tailwind</strong>&apos;s new <strong>Dark
-Mode</strong> feature, using <strong>tw-themes</strong> to define your <strong>dark themes</strong>
-requires <strong>NO CHANGES</strong> to your markup <em>(the <strong>tailwind</strong> solution
-requires you to tediously add the <code>dark</code> variant throughout your
-markup)</em>.</p>
-</li>
-<li><p>Because <strong>tailwind</strong> needs to know about your Context Colors,
-<strong>tw-themes</strong> provides a utility that auto-generates the required
-color definitions ... referenced in your <code>tailwind.config.js</code> <em>(part
-of the build process)</em>.</p>
-</li>
-<li><p>As an internal tidbit, the dynamics of run-time color mapping is
-accomplished through the use of CSS Variables <em>(see
-<a href="concepts/how.html">How do it know?</a>)</em> ... <em><strong>inquiring minds want to know!</strong></em></p>
-</li>
-</ul>
-<p><strong>tw-themes</strong> promotes a <mark><strong>clean and simple approach</strong></mark> to
- <em><strong>dynamic color themes</strong></em> that yields <mark><strong>powerful
- results</strong></mark>.</p>
-<h2 id="at-a-glance">At a Glance</h2>
-<ul>
-<li>[link] ... <em>short desc</em> ?? DO THIS</li>
+<li><a href="concepts/contextColors.html">Context Colors (Color Abstraction)</a></li>
+<li><a href="concepts/themes.html">Themes (Real Colors)</a></li>
+<li><a href="concepts/pullTogether.html">Pulling it all together</a></li>
+<li><a href="concepts/shades.html">Context Color Shades</a></li>
+<li><a href="concepts/shadeInversion.html">Shade Inversion</a></li>
+<li><a href="concepts/darkMode.html">Dark Mode</a></li>
+<li><a href="concepts/colorSystems.html">Color Systems</a></li>
+<li><a href="concepts/appState.html">A Note on App State</a></li>
+<li><a href="concepts/reactivity.html">A Note on TwThemes Reactivity</a></li>
+<li><a href="concepts/esModules.html">A Note on ES Modules in Tailwind Configuration</a></li>
+<li><a href="concepts/how.html">How do it know?</a></li>
 </ul>
 
                                 
@@ -656,8 +591,12 @@ accomplished through the use of CSS Variables <em>(see
 
             
                 
+                <a href="start.html" class="navigation navigation-prev " aria-label="Previous page: Getting Started">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="install.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Install">
+                
+                <a href="concepts/contextColors.html" class="navigation navigation-next " aria-label="Next page: Context Colors">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -668,7 +607,7 @@ accomplished through the use of CSS Variables <em>(see
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Install","level":"1.2","depth":1,"path":"install.md","ref":"install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","-sharing","toolbar"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toolbar":{"buttons":[{"label":"GitHub","icon":"fa fa-github","url":"https://github.com/KevinAst/tw-themes"},{"label":"NPM","icon":"fa fa-bullseye","url":"https://www.npmjs.com/package/tw-themes"}]},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"intro.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{"guide":{"invertYourColorShades":"[invert your color shades](/concepts/shadeInversion.md)","aNoteOnTwThemesReactivity":"[A Note on TwThemes Reactivity](/concepts/reactivity.md)","colorSystems":"[Color Systems](/concepts/colorSystems.md)","start":"[Getting Started](/start.md)","aNoteOnAppState":"[A Note on App State](/concepts/appState.md)","contextColors$":"[Context Colors (Color Abstraction)](/concepts/contextColors.md)","shadeInversion":"[Shade Inversion](/concepts/shadeInversion.md)","pullTheseTwoAspectsTogether":"[pull these two aspects together](/concepts/pullTogether.md)","colorShading":"[Color Shading](/concepts/shades.md)","themes":"[Themes](/concepts/themes.md)","pullItAllTogether":"[Pulling it all together](/concepts/pullTogether.md)","concepts":"[Concepts](/concepts.md)","intro":"[Introduction](/intro.md)","realColors":"[Real Colors](/concepts/themes.md)","TwThemesReactivity":"[TwThemes Reactivity](/concepts/reactivity.md)","appState":"[App State](/concepts/appState.md)","howDoItKnow":"[How do it know?](/concepts/how.md)","aNoteOnESModulesInTailwindConfiguration":"[A Note on ES Modules in Tailwind Configuration](/concepts/esModules.md)","colorSystem":"[Color System](/concepts/colorSystems.md)","darkTheme":"[Dark Theme](/concepts/darkMode.md)","contextColor":"[Context Color](/concepts/contextColors.md)","darkMode":"[Dark Mode](/concepts/darkMode.md)","themes$":"[Themes (Real Colors)](/concepts/themes.md)","contextColorShades":"[Context Color Shades](/concepts/shades.md)","install":"[Install](/install.md)","contextColors":"[Context Colors](/concepts/contextColors.md)"},"api":{"getThemes":"[`getThemes()`](/api/TwThemes/getThemes.md)","toggleInvertShade$":"[`toggleInvertShade(): activeInvertShade`](/api/TwThemes/toggleInvertShade.md)","activateNextTheme$":"[`activateNextTheme(): activeThemeName`](/api/TwThemes/activateNextTheme.md)","Schema":"[`Schema`](/api/Schema.md)","toggleInvertShade":"[`toggleInvertShade()`](/api/TwThemes/toggleInvertShade.md)","activateNextTheme":"[`activateNextTheme()`](/api/TwThemes/activateNextTheme.md)","getThemes$":"[`getThemes(): Theme[]`](/api/TwThemes/getThemes.md)","colorConfig":"[`colorConfig()`](/api/TwThemes/colorConfig.md)","initTwThemes$":"[`initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes`]: #inittwthemes`](/api/initTwThemes.md)","Theme":"[`Theme`](/api/Themes.md)","getActiveInvertShade$":"[`getActiveInvertShade(): activeInvertShade`](/api/TwThemes/getActiveInvertShade.md)","Themes":"[`Themes`](/api/Themes.md)","getActiveThemeName$":"[`getActiveThemeName(): activeThemeName`](/api/TwThemes/getActiveThemeName.md)","TwThemes":"[`TwThemes`](/api/TwThemes.md)","activateTheme$":"[`activateTheme({[themeName], [invertShade]}): [activeThemeName, activeInvertShade]`](/api/TwThemes/activateTheme.md)","activatePriorTheme":"[`activatePriorTheme()`](/api/TwThemes/activatePriorTheme.md)","activatePriorTheme$":"[`activatePriorTheme(): activeThemeName`](/api/TwThemes/activatePriorTheme.md)","TwColors":"[`TwColors`](/api/TwColors.md)","activateTheme":"[`activateTheme()`](/api/TwThemes/activateTheme.md)","getActiveThemeName":"[`getActiveThemeName()`](/api/TwThemes/getActiveThemeName.md)","api":"[API](/api.md)","getActiveInvertShade":"[`getActiveInvertShade()`](/api/TwThemes/getActiveInvertShade.md)","initTwThemes":"[`initTwThemes()`](/api/initTwThemes.md)","colorConfig$":"[`colorConfig(): TwColors`](/api/TwThemes/colorConfig.md)"},"ext":{"ColorCalculator":"[Color Calculator](https://www.sessions.edu/color-calculator/)","Material":"[Material](https://material.io/design/color)","ColorTheory":"[Color theory and the color wheel](https://www.canva.com/colors/color-wheel/)","tailwindcss":"[tailwindcss](https://tailwindcss.com/)","cssVars":"[CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)","MaterialIOColorConfigTool":"[Material IO Color Config Tool](https://material.io/resources/color)","IBM":"[IBM](https://www.ibm.com/design/language/color/)","inLikeFlynn":"[in like flynn](https://en.wikipedia.org/wiki/In_like_Flynn)","OpenColor":"[Open Color](https://yeun.github.io/open-color/)","svelte":"[Svelte](https://svelte.dev/)","KISS":"[KISS Principle](https://en.wikipedia.org/wiki/KISS_principle)"}},"title":"tw-themes","gitbook":"3.2.2","description":"powerful tailwind color themes (dynamically selectable at run-time)"},"file":{"path":"intro.md","mtime":"2021-03-15T16:50:27.485Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-03-15T17:02:17.282Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Concepts","level":"2.1","depth":1,"next":{"title":"Context Colors","level":"2.1.1","depth":2,"path":"concepts/contextColors.md","ref":"concepts/contextColors.md","articles":[]},"previous":{"title":"Getting Started","level":"1.3","depth":1,"path":"start.md","ref":"start.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-livereload","-sharing","toolbar"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toolbar":{"buttons":[{"label":"GitHub","icon":"fa fa-github","url":"https://github.com/KevinAst/tw-themes"},{"label":"NPM","icon":"fa fa-bullseye","url":"https://www.npmjs.com/package/tw-themes"}]},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"intro.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{"guide":{"invertYourColorShades":"[invert your color shades](/concepts/shadeInversion.md)","aNoteOnTwThemesReactivity":"[A Note on TwThemes Reactivity](/concepts/reactivity.md)","colorSystems":"[Color Systems](/concepts/colorSystems.md)","start":"[Getting Started](/start.md)","aNoteOnAppState":"[A Note on App State](/concepts/appState.md)","contextColors$":"[Context Colors (Color Abstraction)](/concepts/contextColors.md)","shadeInversion":"[Shade Inversion](/concepts/shadeInversion.md)","pullTheseTwoAspectsTogether":"[pull these two aspects together](/concepts/pullTogether.md)","colorShading":"[Color Shading](/concepts/shades.md)","themes":"[Themes](/concepts/themes.md)","pullItAllTogether":"[Pulling it all together](/concepts/pullTogether.md)","concepts":"[Concepts](/concepts.md)","intro":"[Introduction](/intro.md)","realColors":"[Real Colors](/concepts/themes.md)","TwThemesReactivity":"[TwThemes Reactivity](/concepts/reactivity.md)","appState":"[App State](/concepts/appState.md)","howDoItKnow":"[How do it know?](/concepts/how.md)","aNoteOnESModulesInTailwindConfiguration":"[A Note on ES Modules in Tailwind Configuration](/concepts/esModules.md)","colorSystem":"[Color System](/concepts/colorSystems.md)","darkTheme":"[Dark Theme](/concepts/darkMode.md)","contextColor":"[Context Color](/concepts/contextColors.md)","darkMode":"[Dark Mode](/concepts/darkMode.md)","themes$":"[Themes (Real Colors)](/concepts/themes.md)","contextColorShades":"[Context Color Shades](/concepts/shades.md)","install":"[Install](/install.md)","contextColors":"[Context Colors](/concepts/contextColors.md)"},"api":{"getThemes":"[`getThemes()`](/api/TwThemes/getThemes.md)","toggleInvertShade$":"[`toggleInvertShade(): activeInvertShade`](/api/TwThemes/toggleInvertShade.md)","activateNextTheme$":"[`activateNextTheme(): activeThemeName`](/api/TwThemes/activateNextTheme.md)","Schema":"[`Schema`](/api/Schema.md)","toggleInvertShade":"[`toggleInvertShade()`](/api/TwThemes/toggleInvertShade.md)","activateNextTheme":"[`activateNextTheme()`](/api/TwThemes/activateNextTheme.md)","getThemes$":"[`getThemes(): Theme[]`](/api/TwThemes/getThemes.md)","colorConfig":"[`colorConfig()`](/api/TwThemes/colorConfig.md)","initTwThemes$":"[`initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes`]: #inittwthemes`](/api/initTwThemes.md)","Theme":"[`Theme`](/api/Themes.md)","getActiveInvertShade$":"[`getActiveInvertShade(): activeInvertShade`](/api/TwThemes/getActiveInvertShade.md)","Themes":"[`Themes`](/api/Themes.md)","getActiveThemeName$":"[`getActiveThemeName(): activeThemeName`](/api/TwThemes/getActiveThemeName.md)","TwThemes":"[`TwThemes`](/api/TwThemes.md)","activateTheme$":"[`activateTheme({[themeName], [invertShade]}): [activeThemeName, activeInvertShade]`](/api/TwThemes/activateTheme.md)","activatePriorTheme":"[`activatePriorTheme()`](/api/TwThemes/activatePriorTheme.md)","activatePriorTheme$":"[`activatePriorTheme(): activeThemeName`](/api/TwThemes/activatePriorTheme.md)","TwColors":"[`TwColors`](/api/TwColors.md)","activateTheme":"[`activateTheme()`](/api/TwThemes/activateTheme.md)","getActiveThemeName":"[`getActiveThemeName()`](/api/TwThemes/getActiveThemeName.md)","api":"[API](/api.md)","getActiveInvertShade":"[`getActiveInvertShade()`](/api/TwThemes/getActiveInvertShade.md)","initTwThemes":"[`initTwThemes()`](/api/initTwThemes.md)","colorConfig$":"[`colorConfig(): TwColors`](/api/TwThemes/colorConfig.md)"},"ext":{"ColorCalculator":"[Color Calculator](https://www.sessions.edu/color-calculator/)","Material":"[Material](https://material.io/design/color)","ColorTheory":"[Color theory and the color wheel](https://www.canva.com/colors/color-wheel/)","tailwindcss":"[tailwindcss](https://tailwindcss.com/)","cssVars":"[CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)","MaterialIOColorConfigTool":"[Material IO Color Config Tool](https://material.io/resources/color)","IBM":"[IBM](https://www.ibm.com/design/language/color/)","inLikeFlynn":"[in like flynn](https://en.wikipedia.org/wiki/In_like_Flynn)","OpenColor":"[Open Color](https://yeun.github.io/open-color/)","svelte":"[Svelte](https://svelte.dev/)","KISS":"[KISS Principle](https://en.wikipedia.org/wiki/KISS_principle)"}},"title":"tw-themes","gitbook":"3.2.2","description":"powerful tailwind color themes (dynamically selectable at run-time)"},"file":{"path":"concepts.md","mtime":"2021-03-15T16:49:39.505Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-03-15T17:02:17.282Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

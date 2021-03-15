@@ -1,0 +1,698 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>initTwThemes() · tw-themes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Schema.html" />
+    
+    
+    <link rel="prev" href="../api.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">tw-themes (0.1.0)</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../install.html">
+            
+                <a href="../install.html">
+            
+                    
+                    Install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../start.html">
+            
+                <a href="../start.html">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../concepts.html">
+            
+                <a href="../concepts.html">
+            
+                    
+                    Concepts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../concepts/contextColors.html">
+            
+                <a href="../concepts/contextColors.html">
+            
+                    
+                    Context Colors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../concepts/themes.html">
+            
+                <a href="../concepts/themes.html">
+            
+                    
+                    Themes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../concepts/pullTogether.html">
+            
+                <a href="../concepts/pullTogether.html">
+            
+                    
+                    Pull Together
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../concepts/shades.html">
+            
+                <a href="../concepts/shades.html">
+            
+                    
+                    Shades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../concepts/shadeInversion.html">
+            
+                <a href="../concepts/shadeInversion.html">
+            
+                    
+                    Shade Inversion
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../concepts/darkMode.html">
+            
+                <a href="../concepts/darkMode.html">
+            
+                    
+                    Dark Mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../concepts/colorSystems.html">
+            
+                <a href="../concepts/colorSystems.html">
+            
+                    
+                    Color Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../concepts/appState.html">
+            
+                <a href="../concepts/appState.html">
+            
+                    
+                    App State
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../concepts/reactivity.html">
+            
+                <a href="../concepts/reactivity.html">
+            
+                    
+                    Reactivity
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../concepts/esModules.html">
+            
+                <a href="../concepts/esModules.html">
+            
+                    
+                    ES Modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="../concepts/how.html">
+            
+                <a href="../concepts/how.html">
+            
+                    
+                    How do it know?
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../api.html">
+            
+                <a href="../api.html">
+            
+                    
+                    API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="3.1.1" data-path="initTwThemes.html">
+            
+                <a href="initTwThemes.html">
+            
+                    
+                    initTwThemes()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="Schema.html">
+            
+                <a href="Schema.html">
+            
+                    
+                    Schema
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="Themes.html">
+            
+                <a href="Themes.html">
+            
+                    
+                    Themes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="TwColors.html">
+            
+                <a href="TwColors.html">
+            
+                    
+                    TwColors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="TwThemes.html">
+            
+                <a href="TwThemes.html">
+            
+                    
+                    TwThemes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.5.1" data-path="TwThemes/activateNextTheme.html">
+            
+                <a href="TwThemes/activateNextTheme.html">
+            
+                    
+                    activateNextTheme()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.2" data-path="TwThemes/activatePriorTheme.html">
+            
+                <a href="TwThemes/activatePriorTheme.html">
+            
+                    
+                    activatePriorTheme()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.3" data-path="TwThemes/activateTheme.html">
+            
+                <a href="TwThemes/activateTheme.html">
+            
+                    
+                    activateTheme()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.4" data-path="TwThemes/colorConfig.html">
+            
+                <a href="TwThemes/colorConfig.html">
+            
+                    
+                    colorConfig()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.5" data-path="TwThemes/getActiveInvertShade.html">
+            
+                <a href="TwThemes/getActiveInvertShade.html">
+            
+                    
+                    getActiveInvertShade()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.6" data-path="TwThemes/getActiveThemeName.html">
+            
+                <a href="TwThemes/getActiveThemeName.html">
+            
+                    
+                    getActiveThemeName()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.7" data-path="TwThemes/getThemes.html">
+            
+                <a href="TwThemes/getThemes.html">
+            
+                    
+                    getThemes()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5.8" data-path="TwThemes/toggleInvertShade.html">
+            
+                <a href="TwThemes/toggleInvertShade.html">
+            
+                    
+                    toggleInvertShade()
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >initTwThemes()</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h5 style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;" id="
+inittwthemesschema-themes-initialthemename-initialinvertshade-twthemes
+">
+initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes
+</h5>
+
+<p>The <code>initTwThemes()</code> function is the entry point into <strong>tw-themes</strong>.
+It initializes the utility for use in your application, and must be
+invoked very early in the application startup lifecycle <em>(typically in
+a module scoped context)</em>.</p>
+<p>Once the application has fully loaded <em>(via the <code>window load</code> event)</em>,
+the <code>initialThemeName</code>/<code>initialInvertShade</code> will be activated
+automatically.  This allows the application to manage this <code>initial</code>
+state <em>(for example in the browser&apos;s local storage)</em>.</p>
+<p>In essence <code>initTwThemes()</code> is an object creator.  It returns the
+<a href="TwThemes.html"><code>TwThemes</code></a> object, from which from which all
+remaining <strong>tw-themes</strong> API is promoted.  This is done so as to fuse
+the relationship between the <a href="Schema.html"><code>Schema</code></a> and
+<a href="Themes.html"><code>Themes</code></a>.</p>
+<p>The <a href="TwThemes.html"><code>TwThemes</code></a> object contains functions to:</p>
+<ul>
+<li><p>change the active theme at run-time ... see:
+<a href="TwThemes/activateNextTheme.html"><code>activateNextTheme()</code></a>,
+<a href="TwThemes/activatePriorTheme.html"><code>activatePriorTheme()</code></a>,
+<a href="TwThemes/activateTheme.html"><code>activateTheme()</code></a>, 
+<a href="TwThemes/toggleInvertShade.html"><code>toggleInvertShade()</code></a></p>
+</li>
+<li><p>miscellaneous API in support of the app&apos;s theme selection UI
+control ... see:
+<a href="TwThemes/getActiveInvertShade.html"><code>getActiveInvertShade()</code></a>
+<a href="TwThemes/getActiveThemeName.html"><code>getActiveThemeName()</code></a>,
+<a href="TwThemes/getThemes.html"><code>getThemes()</code></a>,</p>
+</li>
+<li><p>auto configure the <strong>tailwind</strong> context colors in
+<code>tailwind.config.js</code> <em>(part of the build process)</em> ... see:
+<a href="TwThemes/colorConfig.html"><code>colorConfig()</code></a></p>
+</li>
+</ul>
+<p><strong>NOTE</strong>: These <a href="TwThemes.html"><code>TwThemes</code></a> methods are in reality functions
+<em>(not methods)</em>.  In other words, they can be used without
+dereferencing the object at run-time.  The object wrapper (in this
+case) is simply a delivery mechanism.</p>
+<p><strong>NOTE</strong>: For additional considerations regarding the
+<a href="TwThemes.html"><code>TwThemes</code></a> object, please refer to the discussions on
+<a href="../concepts/appState.html">App State</a> and <a href="../concepts/reactivity.html">TwThemes Reactivity</a>.</p>
+<p><strong>API:</strong></p>
+<pre><code class="lang-js">+ initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><p><strong><code>schema</code></strong>: <a href="Schema.html"><code>Schema</code></a> - the app-specific color schema,
+defining all <a href="../concepts/contextColors.html">Context Colors</a>.</p>
+</li>
+<li><p><strong><code>themes</code></strong>: <a href="Themes.html"><code>Themes</code></a> - the structure defining one or
+more named color themes supported by this application.  This applies
+real colors to the context colors specified in the app&apos;s
+<a href="Schema.html"><code>Schema</code></a>.</p>
+</li>
+<li><p><strong><code>initialThemeName</code></strong>: {string} - the initial <code>themeName</code> to use at
+app startup.</p>
+<p><strong>DEFAULT</strong>: The first theme in the <code>themes</code> reference.</p>
+</li>
+<li><p><strong><code>initialInvertShade</code></strong>: {boolean} - the initial <code>invertShade</code>
+option to use at app startup.</p>
+<p><strong>DEFAULT</strong>: <code>false</code></p>
+</li>
+</ul>
+<p><strong>Return:</strong> <a href="TwThemes.html"><code>TwThemes</code></a> - a <code>TwThemes</code> object, from which
+from which all remaining <strong>tw-themes</strong> API is promoted.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../api.html" class="navigation navigation-prev " aria-label="Previous page: API">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Schema.html" class="navigation navigation-next " aria-label="Next page: Schema">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"initTwThemes()","level":"3.1.1","depth":2,"next":{"title":"Schema","level":"3.1.2","depth":2,"path":"api/Schema.md","ref":"api/Schema.md","articles":[]},"previous":{"title":"API","level":"3.1","depth":1,"path":"api.md","ref":"api.md","articles":[{"title":"initTwThemes()","level":"3.1.1","depth":2,"path":"api/initTwThemes.md","ref":"api/initTwThemes.md","articles":[]},{"title":"Schema","level":"3.1.2","depth":2,"path":"api/Schema.md","ref":"api/Schema.md","articles":[]},{"title":"Themes","level":"3.1.3","depth":2,"path":"api/Themes.md","ref":"api/Themes.md","articles":[]},{"title":"TwColors","level":"3.1.4","depth":2,"path":"api/TwColors.md","ref":"api/TwColors.md","articles":[]},{"title":"TwThemes","level":"3.1.5","depth":2,"path":"api/TwThemes.md","ref":"api/TwThemes.md","articles":[{"title":"activateNextTheme()","level":"3.1.5.1","depth":3,"path":"api/TwThemes/activateNextTheme.md","ref":"api/TwThemes/activateNextTheme.md","articles":[]},{"title":"activatePriorTheme()","level":"3.1.5.2","depth":3,"path":"api/TwThemes/activatePriorTheme.md","ref":"api/TwThemes/activatePriorTheme.md","articles":[]},{"title":"activateTheme()","level":"3.1.5.3","depth":3,"path":"api/TwThemes/activateTheme.md","ref":"api/TwThemes/activateTheme.md","articles":[]},{"title":"colorConfig()","level":"3.1.5.4","depth":3,"path":"api/TwThemes/colorConfig.md","ref":"api/TwThemes/colorConfig.md","articles":[]},{"title":"getActiveInvertShade()","level":"3.1.5.5","depth":3,"path":"api/TwThemes/getActiveInvertShade.md","ref":"api/TwThemes/getActiveInvertShade.md","articles":[]},{"title":"getActiveThemeName()","level":"3.1.5.6","depth":3,"path":"api/TwThemes/getActiveThemeName.md","ref":"api/TwThemes/getActiveThemeName.md","articles":[]},{"title":"getThemes()","level":"3.1.5.7","depth":3,"path":"api/TwThemes/getThemes.md","ref":"api/TwThemes/getThemes.md","articles":[]},{"title":"toggleInvertShade()","level":"3.1.5.8","depth":3,"path":"api/TwThemes/toggleInvertShade.md","ref":"api/TwThemes/toggleInvertShade.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["-livereload","-sharing","toolbar"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"toolbar":{"buttons":[{"label":"GitHub","icon":"fa fa-github","url":"https://github.com/KevinAst/tw-themes"},{"label":"NPM","icon":"fa fa-bullseye","url":"https://www.npmjs.com/package/tw-themes"}]},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"intro.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{"guide":{"invertYourColorShades":"[invert your color shades](/concepts/shadeInversion.md)","aNoteOnTwThemesReactivity":"[A Note on TwThemes Reactivity](/concepts/reactivity.md)","colorSystems":"[Color Systems](/concepts/colorSystems.md)","start":"[Getting Started](/start.md)","aNoteOnAppState":"[A Note on App State](/concepts/appState.md)","contextColors$":"[Context Colors (Color Abstraction)](/concepts/contextColors.md)","shadeInversion":"[Shade Inversion](/concepts/shadeInversion.md)","pullTheseTwoAspectsTogether":"[pull these two aspects together](/concepts/pullTogether.md)","colorShading":"[Color Shading](/concepts/shades.md)","themes":"[Themes](/concepts/themes.md)","pullItAllTogether":"[Pulling it all together](/concepts/pullTogether.md)","concepts":"[Concepts](/concepts.md)","intro":"[Introduction](/intro.md)","realColors":"[Real Colors](/concepts/themes.md)","TwThemesReactivity":"[TwThemes Reactivity](/concepts/reactivity.md)","appState":"[App State](/concepts/appState.md)","howDoItKnow":"[How do it know?](/concepts/how.md)","aNoteOnESModulesInTailwindConfiguration":"[A Note on ES Modules in Tailwind Configuration](/concepts/esModules.md)","colorSystem":"[Color System](/concepts/colorSystems.md)","darkTheme":"[Dark Theme](/concepts/darkMode.md)","contextColor":"[Context Color](/concepts/contextColors.md)","darkMode":"[Dark Mode](/concepts/darkMode.md)","themes$":"[Themes (Real Colors)](/concepts/themes.md)","contextColorShades":"[Context Color Shades](/concepts/shades.md)","install":"[Install](/install.md)","contextColors":"[Context Colors](/concepts/contextColors.md)"},"api":{"getThemes":"[`getThemes()`](/api/TwThemes/getThemes.md)","toggleInvertShade$":"[`toggleInvertShade(): activeInvertShade`](/api/TwThemes/toggleInvertShade.md)","activateNextTheme$":"[`activateNextTheme(): activeThemeName`](/api/TwThemes/activateNextTheme.md)","Schema":"[`Schema`](/api/Schema.md)","toggleInvertShade":"[`toggleInvertShade()`](/api/TwThemes/toggleInvertShade.md)","activateNextTheme":"[`activateNextTheme()`](/api/TwThemes/activateNextTheme.md)","getThemes$":"[`getThemes(): Theme[]`](/api/TwThemes/getThemes.md)","colorConfig":"[`colorConfig()`](/api/TwThemes/colorConfig.md)","initTwThemes$":"[`initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes`]: #inittwthemes`](/api/initTwThemes.md)","Theme":"[`Theme`](/api/Themes.md)","getActiveInvertShade$":"[`getActiveInvertShade(): activeInvertShade`](/api/TwThemes/getActiveInvertShade.md)","Themes":"[`Themes`](/api/Themes.md)","getActiveThemeName$":"[`getActiveThemeName(): activeThemeName`](/api/TwThemes/getActiveThemeName.md)","TwThemes":"[`TwThemes`](/api/TwThemes.md)","activateTheme$":"[`activateTheme({[themeName], [invertShade]}): [activeThemeName, activeInvertShade]`](/api/TwThemes/activateTheme.md)","activatePriorTheme":"[`activatePriorTheme()`](/api/TwThemes/activatePriorTheme.md)","activatePriorTheme$":"[`activatePriorTheme(): activeThemeName`](/api/TwThemes/activatePriorTheme.md)","TwColors":"[`TwColors`](/api/TwColors.md)","activateTheme":"[`activateTheme()`](/api/TwThemes/activateTheme.md)","getActiveThemeName":"[`getActiveThemeName()`](/api/TwThemes/getActiveThemeName.md)","api":"[API](/api.md)","getActiveInvertShade":"[`getActiveInvertShade()`](/api/TwThemes/getActiveInvertShade.md)","initTwThemes":"[`initTwThemes()`](/api/initTwThemes.md)","colorConfig$":"[`colorConfig(): TwColors`](/api/TwThemes/colorConfig.md)"},"ext":{"ColorCalculator":"[Color Calculator](https://www.sessions.edu/color-calculator/)","Material":"[Material](https://material.io/design/color)","ColorTheory":"[Color theory and the color wheel](https://www.canva.com/colors/color-wheel/)","tailwindcss":"[tailwindcss](https://tailwindcss.com/)","cssVars":"[CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)","MaterialIOColorConfigTool":"[Material IO Color Config Tool](https://material.io/resources/color)","IBM":"[IBM](https://www.ibm.com/design/language/color/)","inLikeFlynn":"[in like flynn](https://en.wikipedia.org/wiki/In_like_Flynn)","OpenColor":"[Open Color](https://yeun.github.io/open-color/)","svelte":"[Svelte](https://svelte.dev/)","KISS":"[KISS Principle](https://en.wikipedia.org/wiki/KISS_principle)"}},"title":"tw-themes","gitbook":"3.2.2","description":"powerful tailwind color themes (dynamically selectable at run-time)"},"file":{"path":"api/initTwThemes.md","mtime":"2021-03-15T16:42:04.094Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2021-03-15T17:02:17.282Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-toolbar/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
