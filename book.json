@@ -11,7 +11,8 @@
   "plugins": [
     "-livereload",
     "-sharing",
-    "toolbar"
+    "toolbar",
+    "folding-menu"
   ],
   "pluginsConfig": {
     "toolbar": {
@@ -27,6 +28,10 @@
           "url": "https://www.npmjs.com/package/tw-themes"
         }
       ]
+    },
+    "folding-menu":    {
+      "animationDuration": 500,
+      "sticky":            false
     }
   },
 
@@ -74,7 +79,7 @@
       "api": "[API](/api.md)",
 
       "initTwThemes": "[`initTwThemes()`](/api/initTwThemes.md)",
-      "initTwThemes$": "[`initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes`]: #inittwthemes`](/api/initTwThemes.md)",
+      "initTwThemes$": "[`initTwThemes(schema, themes, [initialThemeName], [initialInvertShade]): TwThemes`](/api/initTwThemes.md)",
 
       "TwThemes": "[`TwThemes`](/api/TwThemes.md)",
 

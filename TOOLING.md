@@ -647,30 +647,47 @@ At the end of this process you should have:
 9. Install [`folding-menu`] GitBook plugin that "tames" large left-nav
    menus by visualizing one section at a time.
 
-   L8TR: Have not done this yet _(wait till our sections become longer)_.
+   - add following to `book.json`:
 
-   ```
-   $ npm install --save-dev gitbook-plugin-folding-menu
-   ```
-
-   **book.json**
-   ```js
-   {
-     ...
-     "plugins": [
-       ... other plugins you may be using
-       "folding-menu"
-     ]
-     ...
-     "pluginsConfig": {
-       "folding-menu":	{
-         "animationDuration": 500,
-         "sticky":            true
+     **book.json**
+     ```js
+     {
+       ...
+       "plugins": [
+         ... other plugins you may be using
+         "folding-menu"
+       ]
+       ...
+       "pluginsConfig": {
+         "folding-menu":	{
+           "animationDuration": 500,
+           "sticky":            false
+         }
        }
      }
-   }
-   ```
+     ```
 
+     There appears to be a bug in the folding-menu plugin "sticky" setting,
+     where it is NOT informed of a top-level page change when done via a
+     link.  As a result I have disabled this option ("sticky": false).
+
+   - install the new plugins
+
+     ```
+     $ npx gitbook install
+     
+         info: installing 2 plugins using npm@3.9.2 
+         info: installing plugin "toolbar" 
+         info: install plugin "toolbar" (*) from NPM with version 0.6.0 
+         info: >> plugin "toolbar" installed with success 
+         info:  
+         info: installing plugin "folding-menu" 
+         info: install plugin "folding-menu" (*) from NPM with version 1.0.1 
+         info: >> plugin "folding-menu" installed with success 
+     
+     > NOT (OLD):
+     $ npm install --save-dev gitbook-plugin-folding-menu
+     ```
 
 <!--- *** SUB-SECTION *************************************************************** --->
 # Setup js.org sub-domain
@@ -817,7 +834,7 @@ is my summary _(more notes hidden here in comment form)_:
              * check in commit:
                >>> KEY: use this description (they will change it to this if you don't):
                ... NOT: adding tw-themes sub-domain
-               ... YES: tw-themes.js
+               ... YES: tw-themes.js.org
              * issue New Pull Request
              * back in the dns.js.org, monitor your Pull Request
                ... https://github.com/js-org/js.org/pulls
