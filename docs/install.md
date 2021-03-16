@@ -1,17 +1,15 @@
 # Install
 
-- **peerDependencies**:
+**tw-themes** is a zero-dependent library.  
 
-  **tw-themes** has a peerDependency on **tailwindcss** _which also needs to
-  be configured_.  Most likely you should already have this installed
-  ... but just in case:
+It does have one peerDependency: **tailwindcss** _(v2+)_ which you
+must install & configure _(most likely you have already done this)_.
+The dependence on **tailwindcss** is very minimal ... it simply
+references tailwind's standard color pallet, when your
+{{book.api.Theme}} references a tailwind color.
 
-  ```shell
-  npm install --save tailwindcss
-  ```
+To install **tw-themes**, you simply do an `npm install`:
 
-- **the main event**:
-
-  ```shell
-  npm install --save tw-themes
-  ```
+```shell
+npm install --save tw-themes
+```
