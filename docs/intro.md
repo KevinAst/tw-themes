@@ -21,7 +21,7 @@
 </p>
 
 
-Developing **dynamic color themes** _that are dynamically selectable
+Developing **color themes** _that are dynamically selectable
 at run-time_ is **a tedious and arduous process**.  Ideally **Dark
 Mode** would also be included in our requirements list!  While
 **tailwind** provides a powerful foundation to work from, it has no
