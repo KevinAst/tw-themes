@@ -93,4 +93,16 @@ of the build process)_.
 
 ## At a Glance
 
-- [link] ... _short desc_ ?? DO THIS
+- {{book.guide.install}} ... _installation instructions_
+
+- {{book.guide.start}} ... _introduction and basic usage patterns_
+
+- {{book.guide.concepts}} ... _basic concepts concepts and terminology_
+
+- {{book.api.api}} ... _API reference_
+
+- _Misc_ ...
+
+  - {{book.misc.history}} ... _peruse the various revisions of **feature-u**_
+
+  - {{book.misc.LICENSE}} ... _legal stuff_
