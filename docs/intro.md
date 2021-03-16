@@ -78,9 +78,9 @@ Using **tw-themes** ...
   markup)_.
 
 - Because **tailwind** needs to know about your Context Colors,
-**tw-themes** provides a utility that auto-generates the required
-color definitions ... referenced in your `tailwind.config.js` _(part
-of the build process)_.
+  **tw-themes** provides a utility that auto-generates the required
+  color definitions ... referenced in your `tailwind.config.js` _(part
+  of the build process)_.
 
 - As an internal tidbit, the dynamics of run-time color mapping is
   accomplished through the use of CSS Variables _(see
