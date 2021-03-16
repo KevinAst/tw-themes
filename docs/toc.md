@@ -34,3 +34,8 @@
     * [`getActiveThemeName()`](api/TwThemes/getActiveThemeName.md)
     * [`getThemes()`](api/TwThemes/getThemes.md)
     * [`toggleInvertShade()`](api/TwThemes/toggleInvertShade.md)
+
+----
+* [Revision History](history.md)
+  * [v0.1.0 (March 19, 2021)](history.md#v0_1_0)
+* [MIT License](LICENSE.md)

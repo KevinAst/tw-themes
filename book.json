@@ -114,6 +114,10 @@
         
       "TwColors":  "[`TwColors`](/api/TwColors.md)"
     },
+    "misc": {
+      "history": "[Revision History](/history.md)",
+      "LICENSE": "[MIT License](/LICENSE.md)"
+    },
     "ext": {
       "tailwindcss": "[tailwindcss](https://tailwindcss.com/)",
       "KISS": "[KISS Principle](https://en.wikipedia.org/wiki/KISS_principle)",
