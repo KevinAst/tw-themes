@@ -118,7 +118,8 @@ tw-themes/
   .git/ ................ our local git repo
   .gitignore ........... git repo exclusions (typically machine generated)
   _book/ ............... machine generated docs (output of GitBook)  see: "Setup Docs Tooling"
-  babel.config.js ...... babel configuration used by jest see: "Setup Unit Testing"
+  babel.config.js ...... babel configuration used by jest (see: "Setup Unit Testing")
+                         and library build (see: "Setup Library Deployment")
   book.json ............ GitBook configuration see: "Setup Docs Tooling"
   docs/ ................ master source of GitBook project docs  see: "Setup Docs Tooling"
     *.md ............... various Markdown files making up our docs
@@ -363,15 +364,17 @@ At the end of this process you should have:
 - Impacted Files:
   ```
   tw-themes/
-    babel.config.js ...... babel configuration used by jest  [see: "Setup Unit Testing")
-    jest.config.js ....... jest unit testing configuration [see: "Setup Unit Testing")
+    babel.config.js
+    jest.config.js
   ```
 
 **Installation Details**:
 
-**NOTE**: Jest requires babel (installed here)
+- Install required dependencies (Jest and Babel).
 
-- Install required dependencies (Jest and Babel):
+  NOTE: Some of these dependencies overlap with other setup (ex:
+          "Setup Unit Testing").  Install what is missing.
+
   ```
   $ npm install --save-dev @babel/core @babel/preset-env jest babel-jest
     + babel-jest@26.6.3
