@@ -41,7 +41,7 @@
     "predocs:publish": "npm run docs:build",
     "test": "jest src",
     "test:watch": "npm run test -- --watch",
-    "lib:build": "babel src --out-dir lib",
+    "lib:build": "babel src --out-dir lib --no-comments",
     "lib:clean": "rimraf lib",
     "prelib:build": "npm run test",
     "prepare": "npm run lib:build"
