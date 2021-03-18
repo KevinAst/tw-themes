@@ -92,7 +92,7 @@ Release           | What                 | *When*
 
 1. **Docs**: ?? A "See It Live" section was introduced.
 
-1. **Docs**: ?? An inproved **tw-themes** logo was introduced.
+1. **Docs**: ?? An improved **tw-themes** logo was introduced.
 
 1. **Internal**: Project tooling was finalized.
 
@@ -100,7 +100,9 @@ Release           | What                 | *When*
      * ?? "Setup Lib Deployment"
      * ?? "Deploy Project"
 
-   - ?? Attempt to remove unit tests from deployment bundle
+   - Devised a MUCH IMPROVED work-around for the docs:server npm script.
+
+   - ?? Remove unit test modules from deployment bundle
      _(by moving `.npmignore` into `src/` directory)_.
 
 
