@@ -15,6 +15,8 @@ development of the **tw-themes** project.
   - [Setup Docs Tooling]
   - [Setup js.org sub-domain]
   - [Setup Lib Packaging]
+- [Deploy Project]
+- [Setup New Feature Branch]
 
 
 <!--- *** SECTION *************************************************************** --->
@@ -74,7 +76,7 @@ lib:build ...... build library bundle in lib/ directory
 
 lib:clean ...... clean machine-generated lib/ directory
 
-                 NOTE: to deploy libary:
+                 NOTE: to deploy library:
                  $ npm publish
                    ... will auto build lib/ directory
                        via: "prepare": "npm run lib:build" 
@@ -1024,6 +1026,103 @@ At the end of this process you should have:
 
 
 
+<!--- *** SECTION *************************************************************** --->
+# Deploy Project
+
+This section chronicles the steps in deploying **tw-themes** to NPM.
+
+**Feature Branch**:
+
+Typically all development is done in a **feature branch**.  If you are
+about to deploy, presumably your branch is complete and documented.
+
+1. insure all tests are operational
+
+   ```
+   $ npm run test
+   ```
+
+2. finalize version -and- history notes:
+
+   - for the new version, use [semantic standards](http://semver.org/)
+
+   - update version in:
+     * `package.json`
+     * `docs/toc.md` (version is referenced at top)
+     * `docs/history.md` (within the "running" notes)
+
+   - review/finalize all documentation impacted by change
+
+   - optionally: save a neutral version of change history comments (to use in git tagging)
+     * pull from history.md _(normalizing any reference links)_
+     * ALTERNATE: simply reference the documentation history section (in the git tag)
+
+       EX: https://tw-themes.js.org/history.html#v0_1_0
+
+**main Branch**:
+
+1. issue PR (pull request) and merge to main branch
+
+2. sync main to local machine (where the deployment will occur)
+
+3. verify version is correct in:
+   * `package.json`
+   * `docs/toc.md`
+   * `docs/history.md`
+
+4. now, everything should be checked in to main and ready to publish
+
+5. tag the release (in github)
+
+6. publish **tw-themes** to npm **_(THIS IS IT!)_**:
+
+   ```
+    $ npm publish
+      + tw-themes@v.v.v
+   ```
+
+   verify publish was successful
+   - receive email from npm
+   - npm package: https://www.npmjs.com/package/tw-themes
+   - unpkg.com:   https://unpkg.com/tw-themes/
+
+7. publish **tw-themes** documentation:
+
+   ```
+   $ npm run docs:publish
+   ```
+  
+   verify publish docs was successful
+   - https://tw-themes.js.org/
+     * see new version
+     * see correct history
+
+8. optionally test the new package in an external project (by installing it)
+
+
+<!--- *** SECTION *************************************************************** --->
+# Setup New Feature Branch
+
+This section documents the steps to setup a new **feature branch**
+(where all development is typically done):
+
+1. create a new branch (typically spawned from the "main" branch).
+
+   **EX**: `next7`
+
+2. devise "best guess" as to the next version number _(may be
+   premature, but this can subsequently change)_.
+
+   Reflect this in: 
+   * `package.json`
+   * `docs/toc.md` (version is referenced at top)
+   * `docs/history.md` (within the "running" notes)
+
+3. setup new running Revision History (in `docs/history.md`)
+
+   This provides a place where we can incrementally maintain "running"
+   revision notes.
+
 
 
 
@@ -1039,6 +1138,9 @@ At the end of this process you should have:
   [Setup Docs Tooling]:           #setup-docs-tooling
   [Setup js.org sub-domain]:      #setup-jsorg-sub-domain
   [Setup Lib Packaging]:          #setup-lib-packaging
+[Deploy Project]:                 #deploy-project
+[Setup New Feature Branch]:       #setup-new-feature-branch
+
 [js.org]:                         https://js.org/
 [npm]:                            https://www.npmjs.com/
 [Svelte]:                         https://svelte.dev/
