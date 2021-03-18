@@ -27,10 +27,14 @@ _(organized by task)_:
 ```
 DEVELOPMENT
 ===========
+JS:
 test:watch ..... run test suite, continuously watching for module changes
 
-docs:serve ..... launch documentation server, continuously watching for docs changes
-                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
+DOCS:
+docs:build   ... manually build the docs (into the _book/ dir)
+                 1. start an internal web server pointing to _book/ dir
+                 2. manually re-execute docs:build whenever docs/ change
+
 
 TESTING
 =======
@@ -40,19 +44,26 @@ test:watch ..... run test suite, continuously watching for module changes
 
 DOCS             NOTE: we PUBLISH our docs
 ====
-docs:serve ..... launch docs server, continuously watching for docs changes
-                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
-
+docs:build   ... manually build the docs (into the _book/ dir)
+                 - NOTE: this build is executed as the first step in docs:publish
+                 - FOR DOCS DEVELOPMENT:
+                   1. start an internal web server pointing to _book/ dir
+                   2. manually re-execute docs:build whenever docs/ change
+                 - this is MUCH PREFERRED over docs:serve
+                   * it is MUCH FASTER!
+                   * docs:serve is very antiquated (a dead project)
+                     * it is extremely slow
+                     * it constantly stops when any file changes
+                                    
 docs:publish ... publish the latest docs to https://tw-themes.js.org/
                  NOTE: this script FIRST builds the docs from scratch
                        ... via predocs:publish
 
-                 >>> OPTIONALLY:
-docs:build   ... you can manually build the docs (into the _book/ dir)
-                 HOWEVER it is not typically necessary 
-                 BECAUSE this build is executed as the first step in docs:publish
-
 docs:clean   ... clean all machine-generated docs directories
+
+                 >>> ANTIQUATED (see notes on docs:build)
+docs:serve ..... launch docs server, continuously watching for docs changes
+                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
 
 
 BUNDLE/DEPLOY    NOTE: we DEPLOY our bundled library to NPM
@@ -870,7 +881,7 @@ At the end of this process you should have:
 
 - ?? more
 
-??$$ retrofit
+?? retrofit
 
 NOPE: **tw-themes** app is deployed on [GitHub Pages] <<< NOT
 
