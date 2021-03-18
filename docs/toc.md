@@ -37,5 +37,6 @@
 
 ----
 * [Revision History](history.md)
-  * [v0.1.0 (March 19, 2021)](history.md#v0_1_0)
+  * [v0.1.1 (March 18, 2021)](history.md#v0_1_1)
+  * [v0.1.0 (March 17, 2021)](history.md#v0_1_0)
 * [MIT License](LICENSE.md)

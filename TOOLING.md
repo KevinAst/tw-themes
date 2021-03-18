@@ -14,7 +14,7 @@ development of the **tw-themes** project.
   - [Setup Unit Testing]
   - [Setup Docs Tooling]
   - [Setup js.org sub-domain]
-  - [Setup Library Deployment]
+  - [Setup Lib Deployment]
 
 
 <!--- *** SECTION *************************************************************** --->
@@ -119,7 +119,7 @@ tw-themes/
   .gitignore ........... git repo exclusions (typically machine generated)
   _book/ ............... machine generated docs (output of GitBook)  see: "Setup Docs Tooling"
   babel.config.js ...... babel configuration used by jest (see: "Setup Unit Testing")
-                         and library build (see: "Setup Library Deployment")
+                         and library build (see: "Setup Lib Deployment")
   book.json ............ GitBook configuration see: "Setup Docs Tooling"
   docs/ ................ master source of GitBook project docs  see: "Setup Docs Tooling"
     *.md ............... various Markdown files making up our docs
@@ -158,7 +158,7 @@ were carried out, however in some cases the order can be changed.
   - [Setup Unit Testing]
   - [Setup Docs Tooling]
   - [Setup js.org sub-domain]
-  - [Setup Library Deployment]
+  - [Setup Lib Deployment]
 
 
 
@@ -859,7 +859,7 @@ KJB Notes --->
 
 
 <!--- *** SUB-SECTION *************************************************************** --->
-# Setup Library Deployment
+# Setup Lib Deployment
 
 This task will setup the basic Node/NPM tooling needed to
 package/build/deploy the **tw-themes** library.
@@ -1139,7 +1139,7 @@ KJB Notes --->
   [Setup Unit Testing]:           #setup-unit-testing
   [Setup Docs Tooling]:           #setup-docs-tooling
   [Setup js.org sub-domain]:      #setup-jsorg-sub-domain
-  [Setup Library Deployment]:     #setup-library-deployment
+  [Setup Lib Deployment]:         #setup-lib-deployment
 
 [js.org]:                         https://js.org/
 [npm]:                            https://www.npmjs.com/
