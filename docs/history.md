@@ -90,7 +90,7 @@ Release           | What                 | *When*
 
 **NOTE**: This release is a **non-breaking change** _(i.e. no API was affected)_.
 
-1. **Docs**: ?? The "See It Live" section was introduced. ?? LINK
+1. **Docs**: The {{book.guide.seeItLive}} section was introduced.
 
 1. **Docs**: An improved **tw-themes** logo was introduced.
 

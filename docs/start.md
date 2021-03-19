@@ -5,12 +5,8 @@ to setup your color themes.  This is not so much a reflection of the
 **tw-themes** utility, but rather the nature of the beast.  **tw-themes** itself
 is easy to use, and _simplifies a number of burdensome details_.
 
-> Want to see **tw-themes** in action?  Take a peek at my [Svelte
-> Native Forms Demo App](https://svelte-native-forms.js.org/app/)
-> _([source
-> here](https://github.com/KevinAst/svelte-native-forms/tree/main/src))_.
-> The theme selection and dark mode controls are in the top-right
-> NavBar drop-down.
+> Want to see **tw-themes** in action? ... take a peek at the
+> {{book.guide.seeItLive}} section.
 
 1. **First**: You must determine the {{book.guide.contextColors}} that
    you will use in your application.
