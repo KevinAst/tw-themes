@@ -91,7 +91,7 @@ Themes: {
         **NOTE:** You typically cannot use CSS color names (ex:
         `'red'`) because they routinely clash with the **tailwind**
         color names _(which takes precedence)_.  As a result, if you
-        use specify `'red'` it will be referencing the **tailwind**
+        specify `'red'` it will be referencing the **tailwind**
         definition _(not the CSS keyword)_.  Most **tailwind** color
         names are shaded, which may be a source of confusion on some
         errors you may receive.  For example:
