@@ -1,4 +1,3 @@
-// babel needed for jest unit tests :-(
 module.exports = {
   presets: [
     [

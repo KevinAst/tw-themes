@@ -33,3 +33,6 @@ The {{book.api.TwThemes}} object contains functions to:
 - auto configure the **tailwind** context colors in
   `tailwind.config.js` _(part of the build process)_ ... see:
   {{book.api.colorConfig}}
+
+> Want to see **tw-themes** in action? ... take a peek at the
+> {{book.guide.seeItLive}} section.

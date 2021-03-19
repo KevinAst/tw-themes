@@ -1,11 +1,13 @@
 # Table of content 
 
-### tw-themes (0.1.0)
+### tw-themes (0.1.1)
 * [Install](install.md)
-* [Getting Started](start.md)
 
 ----
+* [Getting Started](start.md)
+* [See It Live](seeItLive.md)
 
+----
 * [Concepts](concepts.md)
   * [Context Colors](concepts/contextColors.md)
   * [Themes](concepts/themes.md)
@@ -37,5 +39,8 @@
 
 ----
 * [Revision History](history.md)
-  * [v0.1.0 (March 19, 2021)](history.md#v0_1_0)
+  * [v0.1.1 (March 19, 2021)](history.md#v0_1_1)
+  * [v0.1.0 (March 17, 2021)](history.md#v0_1_0)
+
+----
 * [MIT License](LICENSE.md)

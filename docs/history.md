@@ -68,21 +68,18 @@ page and contains migration instructions _(as needed)_.
 
 ## Summary:
 
-Release           | What                                   | *When*
-------------------|----------------------------------------|------------------
-[v0.1.0](#v0_1_0) | Initial Release                        | *March 19, 2021*
-<!-- ?? NEXT TEMPLATE ... MOVE UP INTO TABLE :-)
-[v0.1.1](#v0_1_1) | Template Release Desc                  | *March 30, 2021*
- -->
+Release           | What                 | *When*
+------------------|----------------------|------------------
+[v0.1.1](#v0_1_1) | Finalize Tooling     | *March 19, 2021*
+[v0.1.0](#v0_1_0) | Initial Release      | *March 17, 2021*
 
 
 ## Details:
 
 <!-- ************************************************************* -->
-<!-- ?? NEXT TEMPLATE
 <br/>
 <h3 id="v0_1_1" style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
-  v0.1.1 - Template Release Desc <i>(March 30, 2021)</i>
+  v0.1.1 - Finalize Tooling <i>(March 19, 2021)</i>
 </h3>
 
 [GitHub Release](https://github.com/KevinAst/tw-themes/releases/tag/v0.1.1)
@@ -93,18 +90,28 @@ Release           | What                                   | *When*
 
 **NOTE**: This release is a **non-breaking change** _(i.e. no API was affected)_.
 
-1. **Review**: Template - First feature change
-   
-   Bla Bla Bla
-   
-1. **Internal**: Template - Next feature change
- -->
+1. **Docs**: The {{book.guide.seeItLive}} section was introduced.
+
+1. **Docs**: An improved **tw-themes** logo was introduced.
+
+1. **Internal**: Project tooling was finalized.
+
+   - The following sections were added to TOOLING.md:
+     * "Setup Lib Packaging"
+     * "Deploy Project"
+     * "Setup New Feature Branch"
+
+   - Devised a MUCH IMPROVED work-around for the docs:server npm script.
+
+   - Remove unit test modules from deployment bundle
+     _(by moving `.npmignore` into `src/` directory)_.
+
 
 
 <!-- ************************************************************* -->
 <br/>
 <h3 id="v0_1_0" style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
-  v0.1.0 - Initial Release <i>(March 19, 2021)</i>
+  v0.1.0 - Initial Release <i>(March 17, 2021)</i>
 </h3>
 
 [GitHub Release](https://github.com/KevinAst/tw-themes/releases/tag/v0.1.0)

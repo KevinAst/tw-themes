@@ -30,6 +30,9 @@ real support for the dynamics that are needed for this task.
 If you are a **tailwind** user _that needs **dynamic color themes**_,
 this utility may be just what you are looking for!
 
+> Want to see **tw-themes** in action? ... take a peek at the
+> {{book.guide.seeItLive}} section.
+
 <!--- Badges ---> 
 [![NPM Version
 Badge](https://img.shields.io/npm/v/tw-themes.svg)](https://www.npmjs.com/package/tw-themes)
@@ -97,12 +100,12 @@ Using **tw-themes** ...
 
 - {{book.guide.start}} ... _introduction and basic usage patterns_
 
+- {{book.guide.seeItLive}} ... _see a real **tw-themes** app_
+
 - {{book.guide.concepts}} ... _basic concepts concepts and terminology_
 
-- {{book.api.api}} ... _API reference_
+- {{book.api.api}} ... _full API reference_
 
-- _Misc_ ...
+- {{book.misc.history}} ... _peruse the various revisions of **feature-u**_
 
-  - {{book.misc.history}} ... _peruse the various revisions of **feature-u**_
-
-  - {{book.misc.LICENSE}} ... _legal stuff_
+- {{book.misc.LICENSE}} ... _legal stuff_

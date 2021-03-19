@@ -1,6 +1,6 @@
 # tw-themes
 
-<p style="text-align: right;">
+<p style="text-align: left;">
   <img src="docs/img/tw-themes-logo.png"
        alt="powerful tailwind color themes (dynamically selectable at run-time)"
        width="50%">
@@ -116,6 +116,16 @@ sections for:
 
 
 <!--- *** Section ************************************************************************* ---> 
+## See It Live
+
+<ul><!--- indentation hack for github - other attempts with style is stripped (be careful with number bullets) ---> 
+
+Want to see **tw-themes** in action? ... take a peek at the [See It
+Live] section _(of the documentation)_.
+
+</ul>
+
+<!--- *** Section ************************************************************************* ---> 
 ## Revision History
 
 <ul><!--- indentation hack for github - other attempts with style is stripped (be careful with number bullets) ---> 
@@ -137,4 +147,5 @@ Please refer to the [Revision History] _(found in the documentation)_.
 [Getting Started]:           https://tw-themes.js.org/start.html
 [Concepts]:                  https://tw-themes.js.org/concepts.html
 [API Reference]:             https://tw-themes.js.org/api.html
+[See It Live]:               https://tw-themes.js.org/seeItLive.html
 [Revision History]:          https://tw-themes.js.org/history.html

@@ -1,11 +1,14 @@
 {
   "name": "tw-themes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "powerful tailwind color themes (dynamically selectable at run-time)",
   "homepage": "https://tw-themes.js.org/",
   "repository": {
     "type": "git",
     "url": "https://github.com/KevinAst/tw-themes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KevinAst/tw-themes/issues"
   },
   "keywords": [
     "tailwind",
@@ -21,17 +24,30 @@
   ],
   "author": "Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)",
   "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "package.json",
+    "LICENSE.md",
+    "README.md",
+    "lib",
+    "src"
+  ],
   "scripts": {
     "docs:build": "gitbook build",
     "docs:serve": "gitbook serve",
-    "predocs:publish": "npm run docs:build",
     "docs:publish": "gh-pages --dist _book",
     "docs:gitbook:help": "gitbook help",
     "docs:clean": "rimraf _book",
+    "predocs:publish": "npm run docs:build",
     "test": "jest src",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "lib:build": "babel src --out-dir lib --no-comments",
+    "lib:clean": "rimraf lib",
+    "prelib:build": "npm run test",
+    "prepare": "npm run lib:build"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "babel-jest": "^26.6.3",

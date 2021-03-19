@@ -4,8 +4,8 @@
 # not really interested in package-lock.json in repo
 /package-lock.json
 
-# ?? REFINE LATER
-# bundled distribution (generated via "npm run build")
+# bundled NPM distribution (generated via "npm run lib:build")
+# ... currently only using /lib/
 /dist/
 /lib/
 /es/

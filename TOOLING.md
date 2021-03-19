@@ -14,7 +14,9 @@ development of the **tw-themes** project.
   - [Setup Unit Testing]
   - [Setup Docs Tooling]
   - [Setup js.org sub-domain]
-  - [Setup Library Deployment]
+  - [Setup Lib Packaging]
+- [Deploy Project]
+- [Setup New Feature Branch]
 
 
 <!--- *** SECTION *************************************************************** --->
@@ -27,10 +29,14 @@ _(organized by task)_:
 ```
 DEVELOPMENT
 ===========
+JS:
 test:watch ..... run test suite, continuously watching for module changes
 
-docs:serve ..... launch documentation server, continuously watching for docs changes
-                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
+DOCS:
+docs:build   ... manually build the docs (into the _book/ dir)
+                 1. start an internal web server pointing to _book/ dir
+                 2. manually re-execute docs:build whenever docs/ change
+
 
 TESTING
 =======
@@ -40,37 +46,46 @@ test:watch ..... run test suite, continuously watching for module changes
 
 DOCS             NOTE: we PUBLISH our docs
 ====
-docs:serve ..... launch docs server, continuously watching for docs changes
-                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
-
+docs:build   ... manually build the docs (into the _book/ dir)
+                 - NOTE: this build is executed as the first step in docs:publish
+                 - FOR DOCS DEVELOPMENT:
+                   1. start an internal web server pointing to _book/ dir
+                   2. manually re-execute docs:build whenever docs/ change
+                 - this is MUCH PREFERRED over docs:serve
+                   * it is MUCH FASTER!
+                   * docs:serve is very antiquated (a dead project)
+                     * it is extremely slow
+                     * it constantly stops when any file changes
+                                    
 docs:publish ... publish the latest docs to https://tw-themes.js.org/
                  NOTE: this script FIRST builds the docs from scratch
                        ... via predocs:publish
 
-                 >>> OPTIONALLY:
-docs:build   ... you can manually build the docs (into the _book/ dir)
-                 HOWEVER it is not typically necessary 
-                 BECAUSE this build is executed as the first step in docs:publish
+docs:clean   ... clean machine-generated docs/ directory
 
-docs:clean   ... clean all machine-generated docs directories
+                 >>> ANTIQUATED (see notes on docs:build)
+docs:serve ..... launch docs server, continuously watching for docs changes
+                 NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
 
 
 BUNDLE/DEPLOY    NOTE: we DEPLOY our bundled library to NPM
 =============
-lib:deploy ..... AI: ?? deploy latest library to NPM
-                 NOTE: This script FIRST builds the app from scratch
-                       ... via prelib:deploy
+lib:build ...... build library bundle in lib/ directory
+                 NOTE: This script FIRST insures all unit tests pass
+                       ... via prelib:build
 
-lib:prodBuild .. AI: ?? build production bundle (to: public/build)
-                 NOTE: This is implicitly invoked from lib:deploy
+lib:clean ...... clean machine-generated lib/ directory
 
-
-lib:clean ...... AI: ?? clean all machine-generated app/build directories
+                 NOTE: to deploy library:
+                 $ npm publish
+                   ... will auto build lib/ directory
+                       via: "prepare": "npm run lib:build" 
+                   ... and deploy to NPM
 
 
 MISC
 ====
-clean .......... AI: ?? cleans ALL machine-generated directories
+clean .......... AI: cleans ALL machine-generated directories
 ```
 
 
@@ -95,15 +110,16 @@ looking at `package.json`, the inevitable questions are:
 The following table itemizes the **tw-themes** dependencies,
 referencing when/where they were introduced/configured.
 
-Dependency                        | Type        | Usage                     | Refer To
---------------------------------- | ----------- | ------------------------- | ----------------
-`@babel/core`                     | **TOOLING** | Jest Testing related      | [Setup Unit Testing]
-`@babel/preset-env`               | **TOOLING** | Jest Testing related      | [Setup Unit Testing]
-`babel-jest`                      | **TOOLING** | Jest Testing related      | [Setup Unit Testing]
-`gh-pages`                        | **TOOLING** | Docs Deployment           | [Setup Docs Tooling]
-`gitbook-cli`                     | **TOOLING** | Docs Generation           | [Setup Docs Tooling]
-`jest`                            | **TOOLING** | Jest Testing Framework    | [Setup Unit Testing]
-`rimraf`                          | **TOOLING** | Various NPM Clean Scripts | [Setup Docs Tooling]
+Dependency                        | Type        | Usage                          | Refer To
+--------------------------------- | ----------- | ------------------------------ | ----------------
+`@babel/cli`                      | **TOOLING** | Lib Packaging                  | [Setup Lib Packaging]
+`@babel/core`                     | **TOOLING** | Lib Packaging<br>Jest Testing  | [Setup Lib Packaging]<br>[Setup Unit Testing]
+`@babel/preset-env`               | **TOOLING** | Lib Packaging<br>Jest Testing  | [Setup Lib Packaging]<br>[Setup Unit Testing]
+`babel-jest`                      | **TOOLING** | Jest Testing                   | [Setup Unit Testing]
+`gh-pages`                        | **TOOLING** | Docs Deployment                | [Setup Docs Tooling]
+`gitbook-cli`                     | **TOOLING** | Docs Generation                | [Setup Docs Tooling]
+`jest`                            | **TOOLING** | Jest Testing Framework         | [Setup Unit Testing]
+`rimraf`                          | **TOOLING** | Various NPM Clean Scripts      | [Setup Docs Tooling]
 `tailwindcss`                     | **TOOLING**<br>**APP** | our peerDependency<br>(what tw-themes is built on) | [Initialize NPM Project]<br>and app code: `src/...`
 
 
@@ -118,7 +134,9 @@ tw-themes/
   .git/ ................ our local git repo
   .gitignore ........... git repo exclusions (typically machine generated)
   _book/ ............... machine generated docs (output of GitBook)  see: "Setup Docs Tooling"
-  babel.config.js ...... babel configuration used by jest see: "Setup Unit Testing"
+  babel.config.js ...... babel configuration used by:
+                         - library packaging (see: "Setup Lib Packaging")
+                         - jest (see: "Setup Unit Testing")
   book.json ............ GitBook configuration see: "Setup Docs Tooling"
   docs/ ................ master source of GitBook project docs  see: "Setup Docs Tooling"
     *.md ............... various Markdown files making up our docs
@@ -157,7 +175,7 @@ were carried out, however in some cases the order can be changed.
   - [Setup Unit Testing]
   - [Setup Docs Tooling]
   - [Setup js.org sub-domain]
-  - [Setup Library Deployment]
+  - [Setup Lib Packaging]
 
 
 
@@ -363,15 +381,17 @@ At the end of this process you should have:
 - Impacted Files:
   ```
   tw-themes/
-    babel.config.js ...... babel configuration used by jest  [see: "Setup Unit Testing")
-    jest.config.js ....... jest unit testing configuration [see: "Setup Unit Testing")
+    babel.config.js
+    jest.config.js
   ```
 
 **Installation Details**:
 
-**NOTE**: Jest requires babel (installed here)
+- Install required dependencies (Jest and Babel).
 
-- Install required dependencies (Jest and Babel):
+  **NOTE**: Some of these dependencies overlap with other setup (Install
+  only what is missing):
+
   ```
   $ npm install --save-dev @babel/core @babel/preset-env jest babel-jest
     + babel-jest@26.6.3
@@ -856,271 +876,254 @@ KJB Notes --->
 
 
 <!--- *** SUB-SECTION *************************************************************** --->
-# Setup Library Deployment
+# Setup Lib Packaging
 
-This task will setup the basic Node/NPM tooling needed to
-package/build/deploy the **tw-themes** library.
+This task will setup the tooling needed to package and deploy the
+**tw-themes** library to NPM.
 
-At the end of this process you should have:
+Currently we use a very simple packaging process that employs babel
+only.  In other words, no bundler is used _(such as webpack or
+rollup)_.
 
-- The tooling needed to build/deploy the **tw-themes** utility.
-
-- ?? more
-
-??$$ retrofit
-
-NOPE: **tw-themes** app is deployed on [GitHub Pages] <<< NOT
+**Links**: [How to publish a npm package?](https://www.robinwieruch.de/publish-npm-package-node)
 
 At the end of this process you should have:
 
-- ?? retrofit
-
-- The ability to deploy the demo app (to github pages)
-  ```
-  $ npm run lib:deploy
-  ```
+- The ability to deploy the **tw-themes** library to NPM.
 
 - Impacted Dependencies:
   ```
-  gh-pages
+  @babel/cli
+  @babel/core
+  @babel/preset-env
   ```
 
-- Impacted Scripts:
+- Impacted Files:
   ```
-  lib:deploy
+  tw-themes/
+    .gitignore
+    package.json
+    babel.config.js
   ```
 
-**Relative App Resources**
+**Installation Details**:
 
-Because our app is deployed to a sub-directory of github pages, all
-startup html resource references should be relative.  Simply change
-`public/index.html` as follows:
+- Install required dependencies (Babel).
 
-```diff
-public/index.html
-=================
--   <link rel='icon' type='/image/png' href='/favicon.png'>
-+   <link rel='icon' type='/image/png' href='favicon.png'>
+  **NOTE**: Some of these dependencies overlap with other setup (Install
+  only what is missing):
 
--   <link rel='stylesheet' href='/global.css'>
-+   <link rel='stylesheet' href='global.css'>
+  ```
+  $ npm install --save-dev @babel/core @babel/preset-env @babel/cli
+  ```
 
--   <link rel='stylesheet' href='/build/bundle.css'>
-+   <link rel='stylesheet' href='build/bundle.css'>
+- modify `package.json` with deployment-specific fields:
 
--   <script defer src='/build/bundle.js'></script>
-+   <script defer src='build/bundle.js'></script>
-```
+  **package.json** _(leave comments out)_:
+  ```js
+  {
+    "name": "tw-themes",    // the name of the npm package
+    "version": "0.1.0",     // the npm package version
 
-**Add `lib:deploy` Script**
+                            // referenced in npm registry
+    "description": "powerful tailwind color themes (dynamically selectable at run-time)",
+    "homepage": "https://tw-themes.js.org/",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/KevinAst/tw-themes.git"
+    },
+    "bugs": {
+      "url": "https://github.com/KevinAst/tw-themes/issues"
+    },
+    "keywords": [
+      "tailwind",
+      "themes",
+      "theme",
+      "dark",
+      "dark-mode",
+      "colors",
+      "web",
+      "utility",
+      "geeku",
+      "astx"
+    ],
+    "author": "Kevin J. Bridges <kevin@wiiBridges.com> (https://github.com/KevinAst)",
+    "license": "MIT",
 
-Add the following scripts to `package.json`:
+    "main": "lib/index.js", // references the generated library bundle
 
-```
-package.json
-============
-{
-  ...
-  "scripts": {
-    "prelib:deploy": "npm run lib:prodBuild",
-    "lib:deploy": "gh-pages --dist public --dest app",
+    "files": [              // resources to include in the NPM package
+      "package.json",
+      "LICENSE.md",
+      "README.md",
+      "lib",
+      "src"
+    ],
+
     ... snip snip
-  }  
-}
-```
+  }
+  ```
+
+- Configure Babel:
+
+  **babel.config.js**:
+  ```js
+  module.exports = {
+    presets: [
+      "@babel/preset-env"
+    ]
+  }
+  ```
+
+- define a `src/.npmignore` to omit modules that should NOT
+  be included in the bundle (ex: unit tests):
+
+  **src/.npmignore**
+  ```
+  # do NOT publish any spec/ directory (unit tests spread throughout our src/ code base)
+  spec
+  ```
+
+- Setup the **lib: NPM Scripts**:
+
+  **package.json** _(leave comments out)_:
+  ```js
+  {
+    ...
+
+    "scripts": {
+      ...
+
+      "lib:build":    "babel src --out-dir lib --no-comments",
+
+      "prelib:build": "npm run test", // don't build unless unit tests are OK
+
+      "lib:clean":    "rimraf lib"
+
+      "prepare":      "npm run lib:build", // run build before `$ npm publish`
+    },
+
+    ... snip snip
+  }
+  ```
+
+- Adjust `.gitignore`:
+
+  **.gitignore**
+  ```
+  # bundled NPM distribution (generated via "npm run lib:build")
+  # ... currently only using /lib/
+  /dist/
+  /lib/
+  /es/
+  ```
+
+- Verify a manual build:
+
+  ```
+  $ run npm lib:build # see results in `lib/` directory
+  ```
 
 
-**Add `docs:publish` Script** ?? AI
+
+<!--- *** SECTION *************************************************************** --->
+# Deploy Project
+
+This section chronicles the steps in deploying **tw-themes** to NPM.
+
+**Feature Branch**:
+
+Typically all development is done in a **feature branch**.  If you are
+about to deploy, presumably your branch is complete and documented.
+
+1. insure all tests are operational
+
+   ```
+   $ npm run test
+   ```
+
+2. finalize version -and- history notes:
+
+   - for the new version, use [semantic standards](http://semver.org/)
+
+   - update version in:
+     * `package.json`
+     * `docs/toc.md` (version is referenced at top)
+     * `docs/history.md` (within the "running" notes)
+
+   - review/finalize all documentation impacted by change
+     * also insure README.md does NOT need to change
+
+   - optionally: save a link-neutral version of change history comments (to use in git tagging)
+     * pull from history.md _(normalizing any reference links)_
+     * ALTERNATE: simply reference the documentation history section (in the git tag)
+
+       EX: https://tw-themes.js.org/history.html#v0_1_0
+
+**main Branch**:
+
+1. issue PR (pull request) and merge to main branch
+
+2. sync main to local machine (where the deployment will occur)
+
+3. verify version is correct in:
+   * `package.json`
+   * `docs/toc.md`
+   * `docs/history.md`
+
+4. now, everything should be checked in to main and ready to publish
+
+5. tag the release (in github)
+   * verify the history page github links are correct (now that the tag exists)
+
+6. publish **tw-themes** to npm **_(THIS IS IT!)_**:
+
+   ```
+    $ npm publish
+      + tw-themes@v.v.v
+   ```
+
+   verify publish was successful
+   - receive email from npm
+   - npm package: https://www.npmjs.com/package/tw-themes
+   - unpkg.com:   https://unpkg.com/tw-themes/
+
+7. publish **tw-themes** documentation:
+
+   ```
+   $ npm run docs:publish
+   ```
+  
+   verify publish docs was successful
+   - https://tw-themes.js.org/
+     * see new version
+     * see correct history
+
+8. optionally test the new package in an external project (by installing it)
 
 
+<!--- *** SECTION *************************************************************** --->
+# Setup New Feature Branch
 
-<!--- Comment out KJB Notes
+This section documents the steps to setup a new **feature branch**
+(where all development is typically done):
 
-**Deploy App VIA gh-pages** _(KJB Notes)_:
+1. create a new branch (typically spawned from the "main" branch).
 
-```
-> REFERENCE: Create React App (Deployment)
-  ... see: https://create-react-app.dev/docs/deployment/#github-pages-https-pagesgithubcom
-> REFERENCE: CreateReactApp.txt
-  ... see: CreateReactApp.txt (see: "deploy app VIA gh-pages")
-           c:/data/tech/dev/ReactJS/notes/CreateReactApp.txt
+   **EX**: `next7`
 
-> ********************************************************************************
-- AI: retrofit this
+2. devise "best guess" as to the next version number _(may be
+   premature, but this can subsequently change)_.
 
-      ********************************
-      * SUMMARIZE DEPLOYMENT PROCESS *
-      ********************************
+   Reflect this in: 
+   * `package.json`
+   * `docs/toc.md` (version is referenced at top)
+   * `docs/history.md` (within the "running" notes)
 
-      > following steps assume the js.org sub-domain is in place
-        ... but (again) you can actually do this first or last
+3. setup new running Revision History (in `docs/history.md`)
 
-      > GENERAL
-      * site organization:
-        /              ... root
-          CNAME        ... the gh-pages custom domain
-          index.html   ... a redirector to our docs
-                           ex: FROM: https://tw-themes.js.org/
-                               TO:   https://tw-themes.js.org/docs
-
-          docs/        ... app documentation
-            bla            FROM: {project}/_docs ... machine generated from {project}/docs (via gitbook)
-            bla            ex:   https://tw-themes.js.org/docs
-
-          app/         ... app deployment
-            bla            FROM: {project}/build ... machine generated from {project}/ (via create-react-app)
-            bla            ex:   https://tw-themes.js.org/app
-
-
-      > GENERAL -and- DOCS-RELATED
-      * setup deployment root
-        - this is MANUALLY done ONE TIME
-          ... using temporary local dirs
-          ... mastered in gh-pages only
-          ... should never change
-              ... if (for some reason) a change is needed
-                  you can edit via github web on gh-pages branch
-
-        - define temporary local files
-          {project}/
-            _docs/
-              CNAME
-              =====
-              tw-themes.js.org
-
-              index.html  ... redirector to docs
-              ==========
-              <!DOCTYPE html>
-              <html lang="en">
-                <head>
-                  <meta charset="UTF-8">
-                  <meta http-equiv="refresh" content="1; url=./docs">
-                  <script>
-                    window.location.href = "./docs"
-                  </script>
-                  <title>tw-themes docs redirect</title>
-                </head>
-                <body>
-                  <h1>tw-themes docs redirect</h1>
-                  <p>
-                    If you are not redirected automatically, follow this link to the
-                    <a href="./docs">tw-themes docs</a>
-                  </p>
-                </body>
-              </html>
-
-              docs/
-                index.html ... temporary file JUST to see it work (will be replaced with gitbook soon)
-
-        - publish docs to gh-pages MANUALLY
-          $ npx gh-pages --dist _docs
-
-        - WORKS: test redirection to docs
-          https://tw-themes.js.org/
-
-        - you can now discard {project}/_docs
-          ... should never change
-              ... if (for some reason) a change is needed
-                  you can edit via github web on gh-pages branch
-          ... and the sub-dirs are published from other sources
-
-
-      > GENERAL
-      > DOCS-RELATED
-      > APP-RELATED
-      * setup the deployment scripts (in package.json)
-        - TERMINOLOGY:
-          "terminology:COMMENT":   "app is DEPLOYED, and docs are PUBLISHED",
-        - DEPLOY APP (NOTE: see CRA for setup required to deploy to a sub-directory ... there is a bit of config)
-          "prelib:deploy": "npm run lib:prodBuild",
-          "lib:deploy": "gh-pages --dist public --dest app",
-        - PUBLISH DOCS ?? NOW HANDLED IN: [Setup Docs Tooling]
-          "l8tr:docs:build:COMMENT":    "NOTE: for gitbook build/serve, following diagnostics are useful: --log=debug --debug",
-          "l8tr:docs:build":            "gitbook build",
-          "l8tr:docs:serve":            "gitbook serve",
-          "l8tr:predocs:publish":       "npm run docs:build",
-KEY       "docs:publish":          "gh-pages --dist _docs --dest docs",
-          "docs:gitbook:help":     "gitbook help",
-
-      > DOCS-RELATED
-      * change {project}/_docs to something different -and- test script: docs:publish
-        - NOTE: just reposition the docs root down and modify
-        - NOTE: this will eventually be machine generated
-        - run script
-          $ npm run docs:publish
-        - WORKED: verify root has NOT changed
-        - WORKED: verify root/docs HAS changed
-
-      > APP-RELATED
-      * setup app deployment
-
-        > BACKGROUND:
-          - KEY: important concept: we are deploying our app in a sub-directory of our server
-                 ... this is a bit different than we have done before
-                 ... sidebar: and we are deploying our docs in a different sub-directory
-          - CRA (Create React App) has a new option that makes it EASY to deploy apps in a sub-directory of our server
-            * we can simply plop our app into ANY dir
-            * KEY: for us, this is a viable option BECAUSE we are NOT using the:
-                   - HTML5 pushState history API
-                   - or not using client-side routing (KJB: they mean routing with history)
-            * SUMMARY: this is accomplished by:
-DO THIS       - using the following "homepage" in our package.json
-                  package.json
-                  ============
-                  "homepage": ".", ... CRA makes all asset paths relative to index.html
-DO THIS       - AND making all our run-time resource retrievals RELATIVE (no starting slash)
-                ... this is the resources found in {project}/public
-                ... ex: 
-                        * KonvaSandboxScreen.js
-                          <img src="tw-themes-logo.png" width="300" alt="Logo" className={classes.entry} /> ... NOT: /tw-themes-logo.png
-                        * initializeFirebase.js
-                          const resp = await fetch('fbac'); ... NOT: '/fbac'
-          
-              - BOTTOM LINE:
-KEY: GREAT      * by using this deployment technique (package.json directive of "homepage": ".")
-                  AND employing relative resource paths (in fetch() and <img/> etc)
-                      NOTE: I did in fact test absolute paths
-                            > these absolute paths WORK in dev, but BREAK in production (when deployed to a sub-dir)
-                            > ... SO the relative paths are a required technique
-KEY: GREAT        - we can deploy the app to ANY sub-directory
-                    * in addition BECAUSE we are NOT using:
-                      * HTML5 pushState history API
-                      * or not using client-side routing (KJB: they mean routing with history)
-KEY: GREAT        - we can use same heuristic for dev and prod deployment
-
-
-        - DO THIS:
-          * apply the "DO THIS" (above)
-          * test app
-            - in dev
-              $ npm run lib:start
-                ... http://localhost:3000/
-            - in prod
-              $ npm run lib:deploy
-                ... https://tw-themes.js.org/app/
-
-      > GENERAL
-      * check in / sync
-        ... finalize app deployment process (supporting BOTH docs and app on the same site)
-
-      > GENERAL
-      * once app is deployed in production,
-        - setup shortcut to run as an app (not in browser)
-          * this chrome procedure has changed (since last chrome version)
-            > YES: this is what we want
-              - create a shortcut -AND- check the "Open as window"
-                ... THIS DOES IT ALL!!!
-            > NO:  this is a bit quirky
-              - create a shortcut
-              - manually alter the properties target, adding the following option AT THE END (delimited with space)
-                  -app=http://localhost:3000/
-              - works pretty well, but is missing some ... hamburger menu
-
-        - bookmark app
-          
-
-KJB Notes --->
-
+   This provides a place where we can incrementally maintain "running"
+   revision notes.
 
 
 
@@ -1136,7 +1139,9 @@ KJB Notes --->
   [Setup Unit Testing]:           #setup-unit-testing
   [Setup Docs Tooling]:           #setup-docs-tooling
   [Setup js.org sub-domain]:      #setup-jsorg-sub-domain
-  [Setup Library Deployment]:     #setup-library-deployment
+  [Setup Lib Packaging]:          #setup-lib-packaging
+[Deploy Project]:                 #deploy-project
+[Setup New Feature Branch]:       #setup-new-feature-branch
 
 [js.org]:                         https://js.org/
 [npm]:                            https://www.npmjs.com/

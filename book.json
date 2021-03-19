@@ -40,6 +40,7 @@
       "intro": "[Introduction](/intro.md)",
       "install": "[Install](/install.md)",
       "start": "[Getting Started](/start.md)",
+      "seeItLive": "[See It Live](/seeItLive.md)",
       "concepts": "[Concepts](/concepts.md)",
 
       "contextColors":  "[Context Colors](/concepts/contextColors.md)",
@@ -120,6 +121,12 @@
     },
     "ext": {
       "tailwindcss": "[tailwindcss](https://tailwindcss.com/)",
+      "snfGithub": "[svelte-native-forms](https://github.com/KevinAst/svelte-native-forms)",
+      "snfDemoApp": "[demo app](https://svelte-native-forms.js.org/app/)",
+      "snf_colorTheme_js": "[`src/layout/colorTheme.js`](https://github.com/KevinAst/svelte-native-forms/blob/main/src/layout/colorTheme.js)",
+      "snf_ThemeSelector_svelte": "[`src/layout/ThemeSelector.svelte`](https://github.com/KevinAst/svelte-native-forms/blob/main/src/layout/ThemeSelector.svelte)",
+      "snf_ThemeInversionSelector_svelte": "[`src/layout/ThemeInversionSelector.svelte`](https://github.com/KevinAst/svelte-native-forms/blob/main/src/layout/ThemeInversionSelector.svelte)",
+      "snf_tailwind_config_js": "[`tailwind.config.js`](https://github.com/KevinAst/svelte-native-forms/blob/main/tailwind.config.js)",
       "KISS": "[KISS Principle](https://en.wikipedia.org/wiki/KISS_principle)",
       "cssVars": "[CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)",
       "svelte": "[Svelte](https://svelte.dev/)",
