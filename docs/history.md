@@ -70,7 +70,7 @@ page and contains migration instructions _(as needed)_.
 
 Release           | What                 | *When*
 ------------------|----------------------|------------------
-[v0.1.1](#v0_1_1) | Finalize Tooling     | *March 18, 2021* ?? confirm date
+[v0.1.1](#v0_1_1) | Finalize Tooling     | *March 19, 2021*
 [v0.1.0](#v0_1_0) | Initial Release      | *March 17, 2021*
 
 
@@ -79,7 +79,7 @@ Release           | What                 | *When*
 <!-- ************************************************************* -->
 <br/>
 <h3 id="v0_1_1" style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
-  v0.1.1 - Finalize Tooling <i>(March 18, 2021)</i>
+  v0.1.1 - Finalize Tooling <i>(March 19, 2021)</i>
 </h3>
 
 [GitHub Release](https://github.com/KevinAst/tw-themes/releases/tag/v0.1.1)

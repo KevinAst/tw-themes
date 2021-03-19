@@ -1,6 +1,6 @@
 {
   "name": "tw-themes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "powerful tailwind color themes (dynamically selectable at run-time)",
   "homepage": "https://tw-themes.js.org/",
   "repository": {
