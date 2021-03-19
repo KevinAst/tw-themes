@@ -1052,8 +1052,9 @@ about to deploy, presumably your branch is complete and documented.
      * `docs/history.md` (within the "running" notes)
 
    - review/finalize all documentation impacted by change
+     * also insure README.md does NOT need to change
 
-   - optionally: save a neutral version of change history comments (to use in git tagging)
+   - optionally: save a link-neutral version of change history comments (to use in git tagging)
      * pull from history.md _(normalizing any reference links)_
      * ALTERNATE: simply reference the documentation history section (in the git tag)
 
@@ -1073,6 +1074,7 @@ about to deploy, presumably your branch is complete and documented.
 4. now, everything should be checked in to main and ready to publish
 
 5. tag the release (in github)
+   * verify the history page github links are correct (now that the tag exists)
 
 6. publish **tw-themes** to npm **_(THIS IS IT!)_**:
 
