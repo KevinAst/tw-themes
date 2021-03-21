@@ -1,6 +1,6 @@
 # Table of content 
 
-### tw-themes (0.1.1)
+### tw-themes (0.2.0)
 * [Install](install.md)
 
 ----
@@ -39,6 +39,7 @@
 
 ----
 * [Revision History](history.md)
+  * [v0.2.0 (Month dd, 2021)](history.md#v0_2_0)
   * [v0.1.1 (March 19, 2021)](history.md#v0_1_1)
   * [v0.1.0 (March 17, 2021)](history.md#v0_1_0)
 

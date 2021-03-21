@@ -70,11 +70,30 @@ page and contains migration instructions _(as needed)_.
 
 Release           | What                 | *When*
 ------------------|----------------------|------------------
+[v0.2.0](#v0_2_0) | TBD                  | *Month dd, 2021*
 [v0.1.1](#v0_1_1) | Finalize Tooling     | *March 19, 2021*
 [v0.1.0](#v0_1_0) | Initial Release      | *March 17, 2021*
 
 
 ## Details:
+
+<!-- ************************************************************* -->
+<br/>
+<h3 id="v0_2_0" style="margin: 10px 0px; border-width: 5px 0px; padding: 5px; border-style: solid;">
+  v0.2.0 - TBD <i>(Month dd, 2021)</i>
+</h3>
+
+[GitHub Release](https://github.com/KevinAst/tw-themes/releases/tag/v0.2.0)
+&bull;
+[GitHub Content](https://github.com/KevinAst/tw-themes/tree/v0.2.0)
+&bull;
+[Diff](https://github.com/KevinAst/tw-themes/compare/v0.1.1...v0.2.0)
+
+**NOTE**: This release is a ??VERIFY?? **non-breaking change** _(i.e. no API was affected)_.
+
+1. ??
+
+
 
 <!-- ************************************************************* -->
 <br/>
