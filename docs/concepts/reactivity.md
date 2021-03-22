@@ -30,15 +30,4 @@ If your application is an exception to this rule, you can easily wrap
 {{book.api.TwThemes}} in the state management solution of your
 choosing to promote it's reactivity.
 
-**FUTURE**: Provide reactivity through simple event (doesn't complicate API at all)!
-```
-TODO: - We can easily provide reactivity by simply emitting a custom
-        DOM event on the <body>: TwThemeChanged - containing:
-        activeThemeName/activeInvertShade
-
-      - reword this section
-
-      - document event
-        * raw event type
-        * reflect in  any function that changes our dynamic state
-```
+{{book.futures.reactivity$}}

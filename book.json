@@ -115,9 +115,15 @@
         
       "TwColors":  "[`TwColors`](/api/TwColors.md)"
     },
+    "futures": {
+      "intro": "[Futures](/futures.md)",
+      "reactivity":  "[Provide Reactivity through DOM Event](/futures/reactivity.md)",
+      "reactivity$": "[**Future Consideration**: Provide Reactivity through DOM Event](/futures/reactivity.md)"
+    },
     "misc": {
       "history": "[Revision History](/history.md)",
-      "LICENSE": "[MIT License](/LICENSE.md)"
+      "LICENSE": "[MIT License](/LICENSE.md)",
+      "discussions": "[GitHub Discussions](https://github.com/KevinAst/tw-themes/discussions)"
     },
     "ext": {
       "tailwindcss": "[tailwindcss](https://tailwindcss.com/)",

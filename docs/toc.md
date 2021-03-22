@@ -44,4 +44,8 @@
   * [v0.1.0 (March 17, 2021)](history.md#v0_1_0)
 
 ----
+* [Futures](futures.md)
+  * [Reactivity](futures/reactivity.md)
+
+----
 * [MIT License](LICENSE.md)

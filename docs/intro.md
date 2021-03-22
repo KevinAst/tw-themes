@@ -108,4 +108,6 @@ Using **tw-themes** ...
 
 - {{book.misc.history}} ... _peruse the various revisions of **tw-themes**_
 
+- {{book.futures.intro}} ... _enhancement ideas for future releases_
+
 - {{book.misc.LICENSE}} ... _legal stuff_
