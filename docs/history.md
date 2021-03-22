@@ -92,7 +92,7 @@ Release           | What                 | *When*
 **NOTE**: This release is a ??VERIFY?? **non-breaking change** _(i.e. no API was affected)_.
 
 1. **Docs**: The {{book.futures.intro}} section was introduced,
-   highlighting potential* enhancements under consideration.
+   highlighting potential enhancements under consideration.
 
 
 <!-- ************************************************************* -->

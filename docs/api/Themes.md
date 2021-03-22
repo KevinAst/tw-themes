@@ -110,5 +110,7 @@ off of the **tailwind** color pallet, for the following reasons:
  - Only **tailwind** colors support **shade inversion**.  Custom
    colors will no-op on **shade inversion** requests.
 
+   {{book.futures.customColorShadeInversion$}}
+
  - Only **tailwind** colors fully support tailwind's opacity
    directives _(how transparent a color is)_.

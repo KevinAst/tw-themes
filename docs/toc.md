@@ -46,6 +46,7 @@
 ----
 * [Futures](futures.md)
   * [Reactivity](futures/reactivity.md)
+  * [Custom Color Shade Inversion](futures/customColorShadeInversion.md)
 
 ----
 * [MIT License](LICENSE.md)

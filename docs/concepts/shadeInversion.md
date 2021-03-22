@@ -20,4 +20,4 @@ philosophy is implemented.
 
 **Please Note** that only **tailwind** colors support **shade
 inversion**.  Custom colors will simply no-op on **shade inversion**
-requests.
+requests.  {{book.futures.customColorShadeInversion$}}

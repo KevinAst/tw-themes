@@ -117,8 +117,12 @@
     },
     "futures": {
       "intro": "[Futures](/futures.md)",
+
       "reactivity":  "[Provide Reactivity through DOM Event](/futures/reactivity.md)",
-      "reactivity$": "[**Future Consideration**: Provide Reactivity through DOM Event](/futures/reactivity.md)"
+      "reactivity$": "[**Future Consideration**: Provide Reactivity through DOM Event](/futures/reactivity.md)",
+
+      "customColorShadeInversion":  "[Custom Color Shade Inversion](/futures/customColorShadeInversion.md)",
+      "customColorShadeInversion$":  "[**Future Consideration**: Custom Color Shade Inversion](/futures/customColorShadeInversion.md)"
     },
     "misc": {
       "history": "[Revision History](/history.md)",

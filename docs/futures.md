@@ -9,4 +9,5 @@ as to accumulate your input.
 The following ideas are currently under consideration:
 
 - {{book.futures.reactivity}}
+- {{book.futures.customColorShadeInversion}}
 

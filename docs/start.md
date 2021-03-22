@@ -185,6 +185,8 @@ is easy to use, and _simplifies a number of burdensome details_.
    control** _(somewhere in your app)_ that invokes the
    {{book.api.toggleInvertShade}} function.
 
+   {{book.futures.customColorShadeInversion$}}
+
 7. **Later**: You will want to define multiple color themes.
    
    You can supply additional color themes by simply adding them in
