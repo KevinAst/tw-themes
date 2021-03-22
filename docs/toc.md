@@ -47,6 +47,7 @@
 * [Futures](futures.md)
   * [Reactivity](futures/reactivity.md)
   * [Custom Color Shade Inversion](futures/customColorShadeInversion.md)
+  * [Promote Dark Mode OS Setting](futures/promoteDarkModeOSSetting.md)
 
 ----
 * [MIT License](LICENSE.md)

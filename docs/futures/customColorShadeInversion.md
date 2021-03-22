@@ -24,5 +24,7 @@ Themes: {
 We would need to determine if this would be optional (i.e. "in
 addition" to the current behavior), or simply replace it.
 
+**DISCUSS**:
+
 To contribute to this topic, please refer to
 [this discussion](https://github.com/KevinAst/tw-themes/discussions/5).

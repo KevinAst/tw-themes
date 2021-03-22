@@ -10,4 +10,4 @@ The following ideas are currently under consideration:
 
 - {{book.futures.reactivity}}
 - {{book.futures.customColorShadeInversion}}
-
+- {{book.futures.promoteDarkModeOSSetting}}

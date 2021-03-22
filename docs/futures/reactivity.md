@@ -22,12 +22,14 @@ TwThemeChanged:
   containing:  activeThemeName/activeInvertShade
 ```
 
-To contribute to this topic, please refer to
-[this discussion](https://github.com/KevinAst/tw-themes/discussions/4).
-
 If we decide to do this, **AI** includes:
 
 - document the `TwThemeChanged` event _(in a new API section)_
   * also reference this event in the API of any function that changes state
 
 - reword the {{book.guide.TwThemesReactivity}} section
+
+**DISCUSS**:
+
+To contribute to this topic, please refer to
+[this discussion](https://github.com/KevinAst/tw-themes/discussions/4).

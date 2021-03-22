@@ -122,7 +122,10 @@
       "reactivity$": "[**Future Consideration**: Provide Reactivity through DOM Event](/futures/reactivity.md)",
 
       "customColorShadeInversion":  "[Custom Color Shade Inversion](/futures/customColorShadeInversion.md)",
-      "customColorShadeInversion$":  "[**Future Consideration**: Custom Color Shade Inversion](/futures/customColorShadeInversion.md)"
+      "customColorShadeInversion$":  "[**Future Consideration**: Custom Color Shade Inversion](/futures/customColorShadeInversion.md)",
+
+      "promoteDarkModeOSSetting":   "[Promote Dark Mode OS Setting](/futures/promoteDarkModeOSSetting.md)",
+      "promoteDarkModeOSSetting$":  "[**Future Consideration**: Promote Dark Mode OS Setting](/futures/promoteDarkModeOSSetting.md)"
     },
     "misc": {
       "history": "[Revision History](/history.md)",
