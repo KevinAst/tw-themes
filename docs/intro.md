@@ -106,6 +106,6 @@ Using **tw-themes** ...
 
 - {{book.api.api}} ... _full API reference_
 
-- {{book.misc.history}} ... _peruse the various revisions of **feature-u**_
+- {{book.misc.history}} ... _peruse the various revisions of **tw-themes**_
 
 - {{book.misc.LICENSE}} ... _legal stuff_
