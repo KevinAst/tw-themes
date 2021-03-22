@@ -7,7 +7,6 @@
 * [Getting Started](start.md)
 * [See It Live](seeItLive.md)
 
-----
 * [Concepts](concepts.md)
   * [Context Colors](concepts/contextColors.md)
   * [Themes](concepts/themes.md)
@@ -43,11 +42,9 @@
   * [v0.1.1 (March 19, 2021)](history.md#v0_1_1)
   * [v0.1.0 (March 17, 2021)](history.md#v0_1_0)
 
-----
 * [Futures](futures.md)
   * [Reactivity](futures/reactivity.md)
   * [Custom Color Shade Inversion](futures/customColorShadeInversion.md)
   * [Promote Dark Mode OS Setting](futures/promoteDarkModeOSSetting.md)
 
-----
 * [MIT License](LICENSE.md)
