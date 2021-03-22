@@ -44,7 +44,7 @@ test ........... run test suite, one time
 test:watch ..... run test suite, continuously watching for module changes
 
 
-DOCS             NOTE: we PUBLISH our docs
+DOCS
 ====
 docs:build   ... manually build the docs (into the _book/ dir)
                  - NOTE: this build is executed as the first step in docs:publish
@@ -68,7 +68,7 @@ docs:serve ..... launch docs server, continuously watching for docs changes
                  NOTE: adding `--log=debug --debug` to this npm script CAN BE USEFUL
 
 
-BUNDLE/DEPLOY    NOTE: we DEPLOY our bundled library to NPM
+BUNDLE/DEPLOY
 =============
 lib:build ...... build library bundle in lib/ directory
                  NOTE: This script FIRST insures all unit tests pass
@@ -133,7 +133,7 @@ summary:
 tw-themes/
   .git/ ................ our local git repo
   .gitignore ........... git repo exclusions (typically machine generated)
-  _book/ ............... machine generated docs (output of GitBook)  see: "Setup Docs Tooling"
+  _book/ ............... machine generated docs (output of GitBook) see: "Setup Docs Tooling"
   babel.config.js ...... babel configuration used by:
                          - library packaging (see: "Setup Lib Packaging")
                          - jest (see: "Setup Unit Testing")
@@ -141,6 +141,7 @@ tw-themes/
   docs/ ................ master source of GitBook project docs  see: "Setup Docs Tooling"
     *.md ............... various Markdown files making up our docs
   jest.config.js ....... jest unit testing configuration see: "Setup Unit Testing"
+  lib/ ................. machine generated library (to deploy) see: "Setup Lib Packaging"
   LICENSE.md ........... our MIT License
   node_modules/ ........ install location of dependent packages (maintained by npm)
   package.json ......... project meta data with dependencies
@@ -754,8 +755,6 @@ is my summary _(more notes hidden here in comment form)_:
  - Monitor PR acceptance (will take 24 hrs).
 
  - Once complete the sub-domain should be active
-
-   NOTE: the original gh-pages link to the new sub-domain
 ```
 
 <!--- Comment out KJB Notes
